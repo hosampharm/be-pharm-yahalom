@@ -53,8 +53,23 @@
   [search,scan].forEach(target=>target.form.addEventListener('submit',event=>{event.preventDefault();const matches=find(target,target===scan);if(validBarcode(target.input.value.trim())&&matches.length===1)openProduct(matches[0]);}));
   const detail=node('section','screen dermo-detail');detail.id='dermoDetail';const heading=node('h1','','מידע על המוצר');heading.id='dermoDetailTitle';heading.tabIndex=-1;detail.setAttribute('aria-labelledby',heading.id);const content=node('div');detail.append(heading,content);document.querySelector('main').append(detail);
   function field(container,label,value){if(!value)return;const section=node('section','product-field');section.append(node('h2','',label),node('p','',value));container.append(section);}
-  function openProduct(product){
-    parentScreens.dermoDetail=currentScreen;content.replaceChildren();
+  let currentProduct=null;
+  const detailHistory=[];
+  const routineStage=p=>({cleanser:'ניקוי',foaming_cleanser:'ניקוי',cleansing_gel:'ניקוי',micellar_water:'ניקוי',moisturizer:'לחות',body_cream:'לחות',hand_cream:'לחות',sunscreen:'הגנה מהשמש'})[p.product_type]||null;
+  function complementaryProducts(product){
+    const stage=routineStage(product);
+    if(!stage)return [];
+    const areas=tags(product,'target_areas');const skins=tags(product,'skin_types');
+    if(!areas.length||!skins.length)return [];
+    const candidates=products.filter(p=>p.id!==product.id&&p.brand===product.brand&&routineStage(p)&&routineStage(p)!==stage&&tags(p,'target_areas').some(a=>areas.includes(a))&&tags(p,'skin_types').some(s=>skins.includes(s))&&text(p,'age_group')===text(product,'age_group'));
+    const used=new Set();
+    return candidates.filter(p=>{const step=routineStage(p);if(used.has(step))return false;used.add(step);return true;}).slice(0,2);
+  }
+  window.handleDermoBack=()=>{if(currentScreen!=='dermoDetail'||!detailHistory.length)return false;openProduct(detailHistory.pop(),true);return true;};
+  function openProduct(product,fromHistory=false){
+    if(currentScreen!=='dermoDetail'){parentScreens.dermoDetail=currentScreen;detailHistory.length=0;}
+    else if(!fromHistory&&currentProduct)detailHistory.push(currentProduct);
+    currentProduct=product;content.replaceChildren();
     const intro=node('div','product-intro');const description=node('div');description.append(node('span','tag',text(product,'brand')),node('h2','',name(product)));
     if(text(product,'product_name_en')){const english=node('p','product-english',text(product,'product_name_en'));english.dir='auto';description.append(english);}
     description.append(node('p','product-meta',[text(product,'product_line'),text(product,'package_size')].filter(Boolean).join(' · ')));
@@ -64,7 +79,13 @@
     const info=node('div','product-information');
     [['recommended_use_he','איך משתמשים לפי המקור'],['suitable_for_he','למי מיועד לפי המקור'],['warnings_he','חשוב לדעת'],['key_ingredients','רכיבים מרכזיים'],['active_ingredients','רכיבים פעילים'],['spf','מקדם הגנה לפי המקור'],['texture','מרקם'],['fragrance_info','מידע על בישום'],['pregnancy_info_he','מידע בנושא היריון'],['age_group','גיל לפי המקור']].forEach(([key,label])=>field(info,label,text(product,key)));
     [['skin_types','סוגי עור לפי הקטלוג'],['concerns','תחומים לפי הקטלוג'],['target_areas','אזורי שימוש לפי הקטלוג']].forEach(([key,label])=>field(info,label,tagText(product,key)));
-    content.append(info);const sources=node('section','product-field product-sources');sources.append(node('h2','','מקורות המידע'));
+    content.append(info);
+    const complements=node('section','dermo-complements');complements.id='dermoComplements';
+    complements.append(node('h2','','להשלמת שגרת הטיפוח'),node('p','dermo-note','אפשרויות לעיון משלבי טיפוח אחרים באותו מותג, לפי תיוגי אזור השימוש וסוג העור בקטלוג. השילוב בין המוצרים לא נבדק; לפני שימוש יחד יש לעיין בהוראות ולבדוק עם הרוקח או הרוקחת.'));
+    const additions=complementaryProducts(product);
+    if(additions.length){const grid=node('div','catalog-grid');grid.id='dermoComplementList';cards(grid,additions);[...grid.children].forEach((card,i)=>card.insertBefore(node('span','product-brand','שלב נוסף: '+routineStage(additions[i])),card.querySelector('.product-name')));complements.append(grid);}
+    else complements.append(node('p','dermo-note','אין כרגע מוצר משלב טיפוח נוסף לפי נתוני הקטלוג. צוות בית המרקחת יכול לעזור בבניית שגרה.'));
+    content.append(complements);const sources=node('section','product-field product-sources');sources.append(node('h2','','מקורות המידע'));
     let links=0;[['official_product_url','מקור רשמי'],['retailer_product_url','מקור קמעונאי']].forEach(([key,label])=>{const url=safeURL(text(product,key));if(!url)return;const link=node('a','source-link',label+' ↗');link.href=url;link.target='_blank';link.rel='noopener noreferrer';sources.append(link);links++;});if(!links)sources.append(node('p','','קישור למקור לא נמסר ברשומה.'));
     const statuses={verified_official:'סומן כמאומת מול מקור רשמי',verified_retailer:'סומן כמאומת מול מקור קמעונאי'};const status=text(product,'verification_status');if(status)sources.append(node('p','','סטטוס בקובץ המקור: '+(statuses[status]||status)));if(text(product,'last_verified_at'))sources.append(node('p','','תאריך בדיקה בקובץ המקור: '+text(product,'last_verified_at')));
     content.append(sources,node('p','dermo-note','המידע מוצג לפי הקטלוג שסופק ואינו אימות עצמאי או המלצה אישית. מידע חסר אינו מעיד על היעדר אזהרות. יש לעיין בתווית המוצר ולהיוועץ ברוקח או ברוקחת. הופעת מוצר אינה מעידה על זמינות במלאי.'));show('dermoDetail');
@@ -181,6 +202,6 @@
   renderBrands();
   function resetCategories(){selectedBrand='';parentScreens.dermoGuide='dermo';brandQuery.value='';renderBrands();selectedGroup=null;directoryMode='concerns';topicQuery.value='';scopedQuery.value='';scopedBrand.value='';scopedSkin.value='';scopedList.replaceChildren();scopedStatus.textContent='';renderDirectory();}
   renderDirectory();
-  window.onDermoScreen=id=>{if(id==='home'){resetCategories();search.input.value='';scan.input.value='';find(search);find(scan,true);resultList.replaceChildren();resultStatus.textContent='';content.replaceChildren();}if(id==='search')search.input.focus();if(id==='scan')scan.input.focus();};
+  window.onDermoScreen=id=>{if(id==='home'){currentProduct=null;detailHistory.length=0;resetCategories();search.input.value='';scan.input.value='';find(search);find(scan,true);resultList.replaceChildren();resultStatus.textContent='';content.replaceChildren();}if(id==='search')search.input.focus();if(id==='scan')scan.input.focus();};
   find(search);find(scan,true);
 })();
