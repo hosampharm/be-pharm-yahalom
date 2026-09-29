@@ -15,7 +15,7 @@ main{flex:1}.screen{padding-bottom:40px}.screen:not(#home){padding-top:46px}.her
 @media(max-width:800px){.app{padding:24px}.world{padding:26px}.grid{grid-template-columns:1fr}.card{min-height:150px}.hero{margin-top:44px}.brand{font-size:21px}}
 @media(max-width:580px){.app{padding:20px}.top{align-items:flex-start;flex-direction:column;gap:18px;padding-bottom:20px}.worlds{grid-template-columns:1fr;gap:16px}.world{min-height:240px;padding:24px}.world-icon{width:46px;height:46px;margin-bottom:22px}.world-title{font-size:27px}.world-description{font-size:17px}.enter{margin-top:22px;padding-top:16px}.hero{margin:32px 0 25px}.hero h1,h1{font-size:34px}.choices{grid-template-columns:1fr}.footer{flex-direction:column;gap:8px}.result{padding:24px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
-</style></head><body><div class="app">
+</style><link rel="stylesheet" href="supplements.css"></head><body><div class="app">
 <header class="top"><div class="brand"><span class="brand-mark" aria-hidden="true">+</span><div>בי פארם יהלום<small lang="en" dir="ltr">BE PHARM YAHALOM</small></div></div><nav class="nav" aria-label="ניווט ראשי"><button id="backButton" type="button" onclick="goBack()" hidden>→ חזרה</button><button id="homeButton" class="home-button" type="button" onclick="show('home')" hidden>⌂ מסך הבית</button></nav></header>
 <main>
 <section id="home" class="screen active"><div class="hero"><p class="eyebrow">ברוכים הבאים לבי פארם יהלום</p><h1>איך אפשר לעזור לך היום?</h1><p>בחרו את עולם המוצרים שלכם</p></div><div class="worlds">
@@ -30,12 +30,15 @@ main{flex:1}.screen{padding-bottom:40px}.screen:not(#home){padding-top:46px}.her
 <section id="results" class="screen"><h1>הבחירה שלכם</h1><p id="summary"></p><div class="result"><span class="tag">בהכנה</span><h2>מידע מאומת על מוצרים יוצג כאן</h2><p>מאגר המוצרים עדיין אינו מחובר. בשלב זה אין תוצאות או המלצות להצגה.</p><p>לעזרה בבחירת מוצר, ניתן לפנות לרוקח או לרוקחת.</p></div></section>
 <section id="search" class="screen"><h1>חיפוש מוצר</h1><div class="result"><span class="tag">בהכנה</span><h2>חיפוש במאגר המוצרים</h2><p>החיפוש יהיה זמין לאחר חיבור מאגר המוצרים המאומת. ניתן לפנות לצוות בית המרקחת לעזרה באיתור מוצר.</p></div></section>
 <section id="scan" class="screen"><h1>סריקת ברקוד</h1><div class="result"><span class="tag">בהכנה</span><h2>מידע על המוצר באמצעות ברקוד</h2><p>הסריקה עדיין אינה זמינה. לאחר חיבור הסורק ומאגר המוצרים, יוצג כאן מידע מאומת על המוצר שנסרק.</p></div></section>
-<section id="supplements" class="screen"><h1>ויטמינים ותוספי תזונה</h1><p>ויטמינים, מינרלים ותוספי תזונה</p><div class="result"><span class="tag">בהכנה</span><h2>עולם התוספים שלנו בדרך</h2><p>אנחנו מכינים מאגר מידע מאומת על המוצרים. המידע יהיה זמין לאחר השלמת הבדיקה וחיבור המאגר.</p><p>בינתיים, הרוקחים שלנו כאן כדי לעזור.</p></div></section>
+<section id="supplements" class="screen"><h1>ויטמינים ותוספי תזונה</h1><p class="catalog-notice">מידע מקטלוג המוצרים שסופק לבית המרקחת. הופעת מוצר אינה מעידה על זמינות במלאי.</p>
+<form id="catalogFilters" class="catalog-filters" role="search"><label class="catalog-search">חיפוש בקטלוג<input id="supplementQuery" type="search" placeholder="שם מוצר, מותג או ברקוד מלא" autocomplete="off"></label><label>מותג<select id="supplementBrand"><option value="">כל המותגים</option></select></label><label>קטגוריה<select id="supplementCategory"><option value="">כל הקטגוריות</option></select></label><button id="resetCatalog" type="button">ניקוי סינון</button></form>
+<p id="catalogCount" class="catalog-count" role="status" aria-live="polite"></p><div id="supplementList" class="catalog-grid"></div><div id="catalogEmpty" class="result" hidden><h2>לא נמצאו מוצרים</h2><p>נסו שם אחר או נקו את הסינון. חיפוש ברקוד דורש מספר מלא שאומת לקטלוג.</p></div></section>
+<section id="supplementDetail" class="screen"><h1>מידע על המוצר</h1><div id="supplementContent"></div></section>
 </main><footer class="footer"><span>מידע כללי בלבד, אינו תחליף לייעוץ רפואי או רוקחי.</span><span>בי פארם יהלום · כאן בשבילכם</span></footer></div>
 <script>
 let need='';
 let currentScreen='home';
-const parentScreens={dermo:'home',supplements:'home',need:'dermo',skin:'need',results:'skin',search:'dermo',scan:'dermo'};
+const parentScreens={dermo:'home',supplements:'home',supplementDetail:'supplements',need:'dermo',skin:'need',results:'skin',search:'dermo',scan:'dermo'};
 document.querySelectorAll('.screen').forEach(screen=>{const heading=screen.querySelector('h1');heading.tabIndex=-1;heading.id=screen.id+'Title';screen.setAttribute('aria-labelledby',heading.id)});
 document.title='בי פארם יהלום | בחירת עולם המוצרים';
 function show(id){
@@ -45,7 +48,7 @@ function show(id){
   currentScreen=id;
   document.getElementById('homeButton').hidden=id==='home';
   document.getElementById('backButton').hidden=id==='home';
-  if(id==='home'){need='';document.getElementById('needLabel').textContent='';document.getElementById('summary').textContent=''}
+  if(id==='home'){need='';document.getElementById('needLabel').textContent='';document.getElementById('summary').textContent='';if(window.resetSupplementCatalog)window.resetSupplementCatalog()}
   document.title='בי פארם יהלום | '+target.querySelector('h1').textContent;
   target.querySelector('h1').focus({preventScroll:true});
   window.scrollTo({top:0,behavior:'instant'});
@@ -53,4 +56,4 @@ function show(id){
 function goBack(){show(parentScreens[currentScreen]||'home')}
 function skin(n){need=n;document.getElementById('needLabel').textContent='בחרת: '+n;show('skin')}
 function results(s){document.getElementById('summary').textContent='צורך: '+need+' • סוג עור: '+s;show('results')}
-</script></body></html>
+</script><script src="data/supplements.js"></script><script src="supplements.js"></script></body></html>

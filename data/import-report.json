@@ -1,0 +1,47 @@
+{
+  "products": 123,
+  "brands": {
+    "Altman": 30,
+    "Nutri Care": 39,
+    "Solgar": 22,
+    "SupHerb": 32
+  },
+  "source_statuses": {
+    "verified_official": 53,
+    "verified_retailer": 70
+  },
+  "barcode_statuses": {
+    "source_file_checksum_valid": 101,
+    "confirmed_retailer_barcode": 22
+  },
+  "issues": [
+    {
+      "id": "solgar-20",
+      "issues": [
+        "Supplied official URL refers to omega-3, not this curcumin product; omitted from customer links."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "file": "altman.xlsx",
+      "sha256": "c88f97e0a2899cbb44f59add99c67fe27d9b93c12fd040736b43d46f167daf70",
+      "products": 30
+    },
+    {
+      "file": "nutricare.xlsx",
+      "sha256": "95e601b17589e761f2a406d4ddcd7df26edcab234f105659c790ada891887eaa",
+      "products": 39
+    },
+    {
+      "file": "solgar.xlsx",
+      "sha256": "fbeabc8a3d1df94af733844ad9e07dc9871cae5ad71cbb90e8a84ac5e77cd8e8",
+      "products": 22
+    },
+    {
+      "file": "supherb.xlsx",
+      "sha256": "d8b595b762972ca851971fddb2d5eb38f074dc5145d7d5f8b4b1a96221b03872",
+      "products": 32
+    }
+  ]
+}
