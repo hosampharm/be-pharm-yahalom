@@ -55,13 +55,16 @@
   function field(container,label,value){if(!value)return;const section=node('section','product-field');section.append(node('h2','',label),node('p','',value));container.append(section);}
   let currentProduct=null;
   const detailHistory=[];
-  const routineStage=p=>({cleanser:'ניקוי',foaming_cleanser:'ניקוי',cleansing_gel:'ניקוי',micellar_water:'ניקוי',moisturizer:'לחות',body_cream:'לחות',hand_cream:'לחות',sunscreen:'הגנה מהשמש'})[p.product_type]||null;
+  const routineStage=p=>({cleanser:'ניקוי',foaming_cleanser:'ניקוי',cleansing_gel:'ניקוי',micellar_water:'ניקוי',moisturizer:'לחות',body_cream:'לחות',hand_cream:'לחות',sunscreen:'הגנה מהשמש',cream:'טיפוח',gel:'טיפוח',serum:'טיפוח',eye_cream:'טיפוח',lip_care:'טיפוח',toner:'טיפוח',mask:'טיפוח',baby_care:'טיפוח'})[p.product_type]||null;
+  const ageTags=p=>({adults:['adults'],all_ages:['babies','children','teens','adults'],babies_and_children:['babies','children'],adults_and_children:['children','adults'],'teens|adults':['teens','adults']})[text(p,'age_group')]||[];
+  const sharedSkin=(a,b)=>{const x=tags(a,'skin_types'),y=tags(b,'skin_types');return x.length&&y.length&&(x.some(s=>y.includes(s))||[...x,...y].some(s=>['all','all_skin_types'].includes(s)));};
   function complementaryProducts(product){
     const stage=routineStage(product);
     if(!stage)return [];
     const areas=tags(product,'target_areas');const skins=tags(product,'skin_types');
     if(!areas.length||!skins.length)return [];
-    const candidates=products.filter(p=>p.id!==product.id&&p.brand===product.brand&&routineStage(p)&&routineStage(p)!==stage&&tags(p,'target_areas').some(a=>areas.includes(a))&&tags(p,'skin_types').some(s=>skins.includes(s))&&text(p,'age_group')===text(product,'age_group'));
+    const candidates=products.filter(p=>p.id!==product.id&&p.brand===product.brand&&['ניקוי','לחות','הגנה מהשמש'].includes(routineStage(p))&&routineStage(p)!==stage&&tags(p,'target_areas').some(a=>areas.includes(a))&&sharedSkin(p,product)&&ageTags(p).some(age=>ageTags(product).includes(age)));
+    candidates.sort((a,b)=>Number(text(b,'product_line')!==''&&b.product_line===product.product_line)-Number(text(a,'product_line')!==''&&a.product_line===product.product_line));
     const used=new Set();
     return candidates.filter(p=>{const step=routineStage(p);if(used.has(step))return false;used.add(step);return true;}).slice(0,2);
   }
@@ -85,7 +88,7 @@
     const additions=complementaryProducts(product);
     if(additions.length){const grid=node('div','catalog-grid');grid.id='dermoComplementList';cards(grid,additions);[...grid.children].forEach((card,i)=>card.insertBefore(node('span','product-brand','שלב נוסף: '+routineStage(additions[i])),card.querySelector('.product-name')));complements.append(grid);}
     else complements.append(node('p','dermo-note','אין כרגע מוצר משלב טיפוח נוסף לפי נתוני הקטלוג. צוות בית המרקחת יכול לעזור בבניית שגרה.'));
-    content.append(complements);const sources=node('section','product-field product-sources');sources.append(node('h2','','מקורות המידע'));
+    content.insertBefore(complements,info);const sources=node('section','product-field product-sources');sources.append(node('h2','','מקורות המידע'));
     let links=0;[['official_product_url','מקור רשמי'],['retailer_product_url','מקור קמעונאי']].forEach(([key,label])=>{const url=safeURL(text(product,key));if(!url)return;const link=node('a','source-link',label+' ↗');link.href=url;link.target='_blank';link.rel='noopener noreferrer';sources.append(link);links++;});if(!links)sources.append(node('p','','קישור למקור לא נמסר ברשומה.'));
     const statuses={verified_official:'סומן כמאומת מול מקור רשמי',verified_retailer:'סומן כמאומת מול מקור קמעונאי'};const status=text(product,'verification_status');if(status)sources.append(node('p','','סטטוס בקובץ המקור: '+(statuses[status]||status)));if(text(product,'last_verified_at'))sources.append(node('p','','תאריך בדיקה בקובץ המקור: '+text(product,'last_verified_at')));
     content.append(sources,node('p','dermo-note','המידע מוצג לפי הקטלוג שסופק ואינו אימות עצמאי או המלצה אישית. מידע חסר אינו מעיד על היעדר אזהרות. יש לעיין בתווית המוצר ולהיוועץ ברוקח או ברוקחת. הופעת מוצר אינה מעידה על זמינות במלאי.'));show('dermoDetail');
