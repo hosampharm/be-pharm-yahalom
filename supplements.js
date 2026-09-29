@@ -11,6 +11,8 @@
   const empty = document.getElementById('catalogEmpty');
   const content = document.getElementById('supplementContent');
   let activeGroup = null;
+  let selectedBrand = '';
+  const scopedProducts = () => selectedBrand ? products.filter(p=>p.brand===selectedBrand) : products;
   let detailOrigin = 'supplementLookup';
   const scopedScreen = document.getElementById('supplements');
   scopedScreen.id = 'supplementCatalog';
@@ -57,7 +59,7 @@
   function render() {
     const term = normalize(query.value);
     const numeric = /^\d+$/.test(term);
-    const matches = products.filter(product => {
+    const matches = scopedProducts().filter(product => {
       if(!activeGroup || !activeGroup.categories.includes(product.category))return false;
       if (brand.value && value(product, 'brand') !== brand.value) return false;
       if (category.value && value(product, 'category') !== category.value) return false;
@@ -78,7 +80,7 @@
       card.addEventListener('click', () => openProduct(product));
       list.append(card);
     });
-    const groupTotal=activeGroup?products.filter(product=>activeGroup.categories.includes(product.category)).length:0;
+    const groupTotal=activeGroup?scopedProducts().filter(product=>activeGroup.categories.includes(product.category)).length:0;
     count.textContent = products.length ? matches.length + ' מוצרים מתוך ' + groupTotal + ' בתחום שבחרתם' : 'הקטלוג אינו זמין כרגע. ניתן לפנות לצוות בית המרקחת.';
     empty.hidden = matches.length > 0 || products.length === 0;
   }
@@ -137,6 +139,7 @@
   }
   function clearFilters(){query.value='';brand.value='';category.value='';render();}
   window.resetSupplementCatalog = () => {
+    selectedBrand='';parentScreens.supplementGuide='supplements';brandQuery.value='';renderBrands();brand.closest('label').hidden=false;
     activeGroup=null;clearFilters();content.replaceChildren();lookupInput.value='';topicInput.value='';renderLookup();renderTopics();
   };
   fillFilter(brand,'brand');fillFilter(category,'category');
@@ -161,7 +164,7 @@
   }
   const entry=screen('supplements','איך תרצו להתחיל?','ויטמינים ותוספי תזונה · בדרך שנוחה לכם');
   const choices=element('div','journey-choices');
-  choices.append(action('הקלדה או סריקת מוצר','מכירים את המוצר? חפשו לפי שם או ברקוד.',()=>show('supplementLookup')),action('התאמה אישית','בחרו תחום עניין והמשיכו למוצרים שבתחום.',()=>show('supplementGuide')));
+  choices.append(action('הקלדה או סריקת מוצר','מכירים את המוצר? חפשו לפי שם או ברקוד.',()=>show('supplementLookup')),action('התאמה אישית','בחרו תחום עניין והמשיכו למוצרים שבתחום.',()=>{selectedBrand='';topicInput.value='';parentScreens.supplementGuide='supplements';renderTopics();show('supplementGuide');}),action('מותגים','בחרו את המותג שלכם והמשיכו לקטגוריות שלו.',()=>{renderBrands();show('supplementBrands');}));
   entry.append(choices,element('p','journey-note','בחירה לפי תחום עניין, ללא אבחון או המלצה רפואית.'));
   const lookup=screen('supplementLookup','איזה מוצר אתם מחפשים?','הקלידו שם או ברקוד, או סרקו בסורק המחובר לעמדה');
   const lookupInput=input(lookup,'lookupQuery','שם מוצר או ברקוד מלא','למשל: מגנזיום או שם המוצר');
@@ -190,17 +193,30 @@
     {title:'תקופת ההיריון',categories:['prenatal'],terms:'הריון היריון prenatal'},
     {title:'תחומים נוספים',categories:['other'],terms:'אחר נוספים'}
   ].filter(group=>products.some(p=>group.categories.includes(p.category)));
-  function selectGroup(group){activeGroup=group;const source=products.filter(p=>group.categories.includes(p.category));fillFilter(brand,'brand',source);fillFilter(category,'category',source);clearFilters();scopedScreen.querySelector('h1').textContent=group.title;scopedScreen.querySelector('.catalog-notice').textContent='מוצרים בתחום העניין שבחרתם. הופעת מוצר אינה מעידה על התאמה אישית או זמינות במלאי.';show('supplementCatalog');}
+  function selectGroup(group){activeGroup=group;const source=scopedProducts().filter(p=>group.categories.includes(p.category));fillFilter(brand,'brand',source);fillFilter(category,'category',source);brand.closest('label').hidden=Boolean(selectedBrand);clearFilters();scopedScreen.querySelector('h1').textContent=(selectedBrand?brandLabel(selectedBrand)+' · ':'')+group.title;scopedScreen.querySelector('.catalog-notice').textContent='מוצרים בתחום העניין שבחרתם. הופעת מוצר אינה מעידה על התאמה אישית או זמינות במלאי.';show('supplementCatalog');}
   function renderTopics(){
+    guide.querySelector('h1').textContent=selectedBrand?brandLabel(selectedBrand)+' · מה תרצו למצוא?':'מה תרצו למצוא?';
     const term=normalize(topicInput.value);topicList.replaceChildren();
-    const matches=groups.filter(group=>{
+    const matches=groups.filter(group=>scopedProducts().some(p=>group.categories.includes(p.category))).filter(group=>{
       const searchable=normalize(group.title+' '+group.terms+' '+group.categories.map(categoryLabel).join(' '));
       const keywords=normalize(group.terms).split(/\s+/).filter(word=>word.length>=3&&!['מערכת','בעיות','טבעית','חוסר'].includes(word));
       return !term||searchable.includes(term)||keywords.some(word=>term.includes(word));
     });
     topicStatus.textContent=matches.length?'בחרו תחום כדי להמשיך':'לא נמצא תחום. נסו מילה אחרת או פנו לרוקח או לרוקחת להכוונה.';
-    matches.forEach(group=>topicList.append(action(group.title,products.filter(p=>group.categories.includes(p.category)).length+' מוצרים בתחום',()=>selectGroup(group))));
+    matches.forEach(group=>topicList.append(action(group.title,scopedProducts().filter(p=>group.categories.includes(p.category)).length+' מוצרים בתחום',()=>selectGroup(group))));
   }
+  const brandScreen=screen('supplementBrands','המותגים שלנו','בחרו מותג, ואז את תחום העניין שמעניין אתכם.');
+  parentScreens.supplementBrands='supplements';
+  const brandQuery=input(brandScreen,'supplementBrandQuery','חיפוש מותג','למשל: סולגאר או Solgar');
+  const brandStatus=element('p','catalog-count');brandStatus.setAttribute('role','status');
+  const brandList=element('div','topic-grid brand-directory');brandList.id='supplementBrandList';brandScreen.append(brandStatus,brandList);
+  function renderBrands(){
+    const term=normalize(brandQuery.value);
+    const matches=[...new Set(products.map(p=>p.brand))].sort((a,b)=>brandLabel(a).localeCompare(brandLabel(b),'he')).filter(b=>normalize(brandLabel(b)).includes(term));
+    brandList.replaceChildren();brandStatus.textContent=matches.length?matches.length+' מותגים בקטלוג':'לא נמצא מותג. נסו שם אחר.';
+    matches.forEach(b=>{const button=action(brandLabel(b),products.filter(p=>p.brand===b).length+' מוצרים בקטלוג',()=>{selectedBrand=b;topicInput.value='';parentScreens.supplementGuide='supplementBrands';renderTopics();show('supplementGuide');});button.classList.add('brand-choice');button.dataset.brand=b;brandList.append(button);});
+  }
+  brandQuery.addEventListener('input',renderBrands);renderBrands();
   topicInput.addEventListener('input',renderTopics);
   window.onSupplementScreen=id=>{if(id==='supplementLookup')lookupInput.focus();};
   renderLookup();renderTopics();
