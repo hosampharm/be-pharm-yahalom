@@ -69,6 +69,86 @@
     const statuses={verified_official:'סומן כמאומת מול מקור רשמי',verified_retailer:'סומן כמאומת מול מקור קמעונאי'};const status=text(product,'verification_status');if(status)sources.append(node('p','','סטטוס בקובץ המקור: '+(statuses[status]||status)));if(text(product,'last_verified_at'))sources.append(node('p','','תאריך בדיקה בקובץ המקור: '+text(product,'last_verified_at')));
     content.append(sources,node('p','dermo-note','המידע מוצג לפי הקטלוג שסופק ואינו אימות עצמאי או המלצה אישית. מידע חסר אינו מעיד על היעדר אזהרות. יש לעיין בתווית המוצר ולהיוועץ ברוקח או ברוקחת. הופעת מוצר אינה מעידה על זמינות במלאי.'));show('dermoDetail');
   }
-  window.onDermoScreen=id=>{if(id==='home'){search.input.value='';scan.input.value='';find(search);find(scan,true);resultList.replaceChildren();resultStatus.textContent='';content.replaceChildren();}if(id==='search')search.input.focus();if(id==='scan')scan.input.focus();};
+  const concernGroups=[
+    {title:'יובש ולחות',keys:['dryness','dehydration','barrier_support'],terms:'יובש לחות התייבשות'},
+    {title:'כתמים וגוון עור',keys:['dark_spots','pigmentation','uneven_tone'],terms:'כתמים פיגמנטציה גוון'},
+    {title:'אקנה ושומניות',keys:['acne','blemishes','oil_control','pores'],terms:'אקנה פצעונים שמן שומניות נקבוביות'},
+    {title:'רגישות ואדמומיות',keys:['sensitivity','redness'],terms:'רגישות אדמומיות רגיש'},
+    {title:'אנטי אייג׳ינג וקמטוטים',keys:['anti_aging','fine_lines','wrinkles'],terms:'אנטי אייגינג קמטוטים קמטים'},
+    {title:'הגנה מהשמש',keys:['sun_protection'],terms:'שמש הגנה spf'}
+  ].map(group=>({...group,contains:p=>tags(p,'concerns').some(tag=>group.keys.includes(tag))}));
+  const typeGroups=[
+    {title:'ניקוי העור',keys:['cleanser','foaming_cleanser','micellar_water','cleansing_gel'],terms:'ניקוי סבון מיסלר'},
+    {title:'סרומים',keys:['serum'],terms:'סרום סרומים'},
+    {title:'קרמים וג׳לים',keys:['cream','moisturizer','gel'],terms:'קרם קרמים גל ג׳ל לחות'},
+    {title:'טיפוח העיניים',keys:['eye_cream'],terms:'עיניים עינים'},
+    {title:'גוף וידיים',keys:['body_cream','hand_cream'],terms:'גוף ידיים ידים'},
+    {title:'מסנני קרינה',keys:['sunscreen'],terms:'שמש הגנה קרינה spf'}
+  ].map(group=>({...group,contains:p=>group.keys.includes(p.product_type)}));
+  function withRemaining(groups){
+    const known=groups.slice();
+    return [...known,{title:'מוצרים נוספים',terms:'אחר נוספים',contains:p=>!known.some(group=>group.contains(p))}]
+      .filter(group=>products.some(group.contains));
+  }
+  const directories={concerns:withRemaining(concernGroups),types:withRemaining(typeGroups)};
+  let directoryMode='concerns';let selectedGroup=null;
+  function makeScreen(id,title){
+    const section=node('section','screen');section.id=id;
+    const h=node('h1','',title);h.id=id+'Title';h.tabIndex=-1;
+    section.setAttribute('aria-labelledby',h.id);section.append(h);document.querySelector('main').append(section);return section;
+  }
+  const guide=makeScreen('dermoGuide','מה תרצו למצוא?');
+  guide.append(node('p','journey-lead','בחרו תחום טיפוח או סוג מוצר, ומשם נמשיך למוצרים שבקטגוריה.'));
+  const modeRow=node('div','dermo-modes');modeRow.setAttribute('aria-label','דרך בחירת קטגוריה');
+  const modeButtons={};
+  for(const [key,label] of [['concerns','לפי צורך'],['types','לפי סוג מוצר']]){
+    const button=node('button','',label);button.type='button';button.setAttribute('aria-pressed',String(key===directoryMode));
+    button.addEventListener('click',()=>{directoryMode=key;topicQuery.value='';renderDirectory();});modeButtons[key]=button;modeRow.append(button);
+  }
+  guide.append(modeRow);
+  const topicLabel=node('label','journey-search','חיפוש קטגוריה');topicLabel.htmlFor='dermoTopicQuery';
+  const topicQuery=node('input');topicQuery.type='search';topicQuery.id=topicLabel.htmlFor;topicQuery.placeholder='למשל: יובש, כתמים או סרום';topicQuery.autocomplete='off';topicLabel.append(topicQuery);guide.append(topicLabel);
+  const guideStatus=node('p','dermo-status');guideStatus.setAttribute('role','status');
+  const guideList=node('div','topic-grid');guideList.id='dermoTopicList';guide.append(guideStatus,guideList);
+  const classic=node('button','dermo-classic','בחירה לפי צורך וסוג עור');classic.type='button';classic.addEventListener('click',()=>{parentScreens.need='dermoGuide';show('need');});
+  guide.append(classic,node('p','dermo-note','הקטגוריות מבוססות על תיוגי הקטלוג, ללא אבחון או המלצה רפואית. מוצר עשוי להופיע בכמה תחומי טיפוח.'));
+  const scoped=makeScreen('dermoCategory','מוצרים בקטגוריה');
+  scoped.append(node('p','dermo-note','חפשו בתוך הקטגוריה שבחרתם. הופעת מוצר אינה מעידה על התאמה אישית או זמינות במלאי.'));
+  const controls=node('form','catalog-filters');controls.setAttribute('role','search');
+  function control(id,label,tag){const wrap=node('label','',label);wrap.htmlFor=id;const field=node(tag);field.id=id;wrap.append(field);controls.append(wrap);return field;}
+  const scopedQuery=control('dermoCategoryQuery','שם מוצר או מותג','input');scopedQuery.type='search';scopedQuery.autocomplete='off';scopedQuery.placeholder='הקלידו לחיפוש בקטגוריה';
+  const scopedBrand=control('dermoCategoryBrand','מותג','select');const scopedSkin=control('dermoCategorySkin','סוג עור','select');
+  const clearButton=node('button','','ניקוי סינון');clearButton.type='button';controls.append(clearButton);scoped.append(controls);
+  const scopedStatus=node('p','dermo-status');scopedStatus.setAttribute('role','status');const scopedList=node('div','catalog-grid');scopedList.id='dermoCategoryList';scoped.append(scopedStatus,scopedList);
+  function fillSelect(select,values,defaultLabel){select.replaceChildren();const all=node('option','',defaultLabel);all.value='';select.append(all);values.forEach(value=>{const option=node('option','',labels[value]||value);option.value=value;select.append(option);});}
+  function renderScoped(){
+    const source=selectedGroup?products.filter(selectedGroup.contains):[];const term=normalize(scopedQuery.value);
+    const matches=source.filter(p=>{
+      if(scopedBrand.value&&p.brand!==scopedBrand.value)return false;
+      if(scopedSkin.value&&!tags(p,'skin_types').includes(scopedSkin.value))return false;
+      if(!term)return true;
+      if(/^\d+$/.test(term))return validBarcode(p.barcode)&&p.barcode===term;
+      return normalize([name(p),text(p,'product_name_en'),text(p,'brand'),brandAliases(text(p,'brand'))].join(' ')).includes(term);
+    });
+    cards(scopedList,matches);scopedStatus.textContent=matches.length?matches.length+' מוצרים מתוך '+source.length+' בקטגוריה':'לא נמצאו מוצרים בקטגוריה עם הסינון הזה. אפשר לשנות את החיפוש או לנקות את הסינון.';
+  }
+  function chooseGroup(group){
+    selectedGroup=group;scoped.querySelector('h1').textContent=group.title;
+    const source=products.filter(group.contains);fillSelect(scopedBrand,[...new Set(source.map(p=>p.brand))].sort(),'כל המותגים');fillSelect(scopedSkin,[...new Set(source.flatMap(p=>tags(p,'skin_types')))].sort(),'כל סוגי העור');scopedQuery.value='';renderScoped();show('dermoCategory');
+  }
+  function renderDirectory(){
+    for(const [key,button] of Object.entries(modeButtons))button.setAttribute('aria-pressed',String(key===directoryMode));
+    const term=normalize(topicQuery.value);
+    const matches=directories[directoryMode].filter(group=>!term||normalize(group.title+' '+group.terms).includes(term)||group.terms.split(' ').filter(word=>word.length>=3).some(word=>term.includes(word)));
+    guideList.replaceChildren();guideStatus.textContent=matches.length?'בחרו קטגוריה כדי לראות את המוצרים':'לא נמצאה קטגוריה. נסו מילה אחרת או החליפו את דרך הבחירה.';
+    matches.forEach(group=>{const button=node('button','journey-choice');button.type='button';button.append(node('span','world-title',group.title),node('span','world-description',products.filter(group.contains).length+' מוצרים'),node('span','enter','למוצרים בקטגוריה ←'));button.addEventListener('click',()=>chooseGroup(group));guideList.append(button);});
+  }
+  topicQuery.addEventListener('input',renderDirectory);scopedQuery.addEventListener('input',renderScoped);scopedBrand.addEventListener('change',renderScoped);scopedSkin.addEventListener('change',renderScoped);controls.addEventListener('submit',event=>event.preventDefault());clearButton.addEventListener('click',()=>{scopedQuery.value='';scopedBrand.value='';scopedSkin.value='';renderScoped();scopedQuery.focus();});
+  parentScreens.dermoGuide='dermo';parentScreens.dermoCategory='dermoGuide';
+  const matchEntry=document.querySelector('#dermo button[onclick="show(\'need\')"]');
+  if(matchEntry){matchEntry.removeAttribute('onclick');matchEntry.addEventListener('click',()=>show('dermoGuide'));matchEntry.querySelector('.card-description').textContent='בחרו קטגוריה או סוג מוצר ומצאו את עולם הטיפוח שלכם.';}
+  function resetCategories(){selectedGroup=null;directoryMode='concerns';topicQuery.value='';scopedQuery.value='';scopedBrand.value='';scopedSkin.value='';scopedList.replaceChildren();scopedStatus.textContent='';renderDirectory();}
+  renderDirectory();
+  window.onDermoScreen=id=>{if(id==='home'){resetCategories();search.input.value='';scan.input.value='';find(search);find(scan,true);resultList.replaceChildren();resultStatus.textContent='';content.replaceChildren();}if(id==='search')search.input.focus();if(id==='scan')scan.input.focus();};
   find(search);find(scan,true);
 })();

@@ -81,6 +81,15 @@ suitability or fill missing tags. No-match combinations remain empty. Product
 details preserve source information, warnings, links and status attribution.
 Both worlds support keyboard-style scanners, not camera capture.
 
+Dermo guided browsing offers category cards by source concern tags or product
+type, then live name search with brand/skin filters confined to that category.
+Product-type groups cover every record once; concern categories can overlap when
+the source tags overlap. Unclassified records remain reachable in the additional
+category rather than being assigned an invented concern. The original two-step
+concern/skin selection remains available as a secondary path. Category browsing
+does not infer treatment or suitability. Back preserves category context and Home
+clears it for the next customer.
+
 ## Deployment
 
 Publish the repository root as a static directory (no build command). There is no
