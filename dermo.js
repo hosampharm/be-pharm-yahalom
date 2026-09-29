@@ -14,7 +14,7 @@
   const labels={dry:'יבש',oily:'שמן',combination:'מעורב',sensitive:'רגיש',normal:'רגיל',all:'כל סוגי העור',all_skin_types:'כל סוגי העור',dark_spots:'כתמים',acne:'אקנה',dryness:'יובש',dehydration:'חוסר לחות',anti_aging:'אנטי אייג׳ינג',face:'פנים',body:'גוף',eyes:'עיניים',lips:'שפתיים',hands:'ידיים',scalp:'קרקפת'};
   const tagText=(product,key)=>tags(product,key).map(tag=>labels[tag]||tag).join(' · ');
   Object.assign(labels,{acne_prone:'נוטה לאקנה',barrier_support:'תמיכה במחסום העור',blemishes:'פגמי עור',pigmentation:'פיגמנטציה',oil_control:'איזון שומניות',pores:'נקבוביות',sensitivity:'רגישות',sun_protection:'הגנה מהשמש',uneven_tone:'גוון לא אחיד',fine_lines:'קמטוטים',redness:'אדמומיות',wrinkles:'קמטים'});
-  const brandAliases=brand=>{const key=normalize(brand).replace(/[^a-z]/g,'');return({cerave:'סרווה סראווה',larocheposay:'לה רוש פוזה לה רוש',vichy:'וישי'})[key]||'';};
+  const brandAliases=brand=>{const key=normalize(brand).normalize('NFD').replace(/[^a-z]/g,'');return({cerave:'סרווה סראווה',larocheposay:'לה רוש פוזה לה רוש',vichy:'וישי',avene:'אוון אבן avene',bioderma:'ביודרמה',cetaphil:'צטאפיל סטאפיל',dror:'ד״ר עור דר עור דוקטור עור',mustela:'מוסטלה',sebocalm:'סבוקלם סבו קאלם',uriage:'אוריאז׳ אוריאז אוריאג'})[key]||'';};
   const resultsScreen=document.getElementById('results');
   resultsScreen.querySelector('h1').textContent='מוצרים לפי הבחירה';
   resultsScreen.querySelector('.result')?.remove();
@@ -83,7 +83,11 @@
     {title:'קרמים וג׳לים',keys:['cream','moisturizer','gel'],terms:'קרם קרמים גל ג׳ל לחות'},
     {title:'טיפוח העיניים',keys:['eye_cream'],terms:'עיניים עינים'},
     {title:'גוף וידיים',keys:['body_cream','hand_cream'],terms:'גוף ידיים ידים'},
-    {title:'מסנני קרינה',keys:['sunscreen'],terms:'שמש הגנה קרינה spf'}
+    {title:'מסנני קרינה',keys:['sunscreen'],terms:'שמש הגנה קרינה spf'},
+    {title:'טיפוח השפתיים',keys:['lip_care'],terms:'שפתיים שפתים שפתון'},
+    {title:'טיפוח תינוקות',keys:['baby_care'],terms:'תינוקות תינוק בייבי'},
+    {title:'מי פנים',keys:['toner'],terms:'מי פנים טונר'},
+    {title:'מסכות פנים',keys:['mask'],terms:'מסכה מסכות'}
   ].map(group=>({...group,contains:p=>group.keys.includes(p.product_type)}));
   function withRemaining(groups){
     const known=groups.slice();

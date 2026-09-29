@@ -1,15 +1,22 @@
 {
-  "products": 45,
+  "products": 150,
   "brands": {
     "CeraVe": 15,
     "La Roche-Posay": 15,
-    "Vichy": 15
+    "Vichy": 15,
+    "Avène": 15,
+    "Bioderma": 15,
+    "Cetaphil": 15,
+    "Dr. Or": 15,
+    "Mustela": 15,
+    "SeboCalm": 15,
+    "Uriage": 15
   },
   "barcode_statuses": {
-    "source_file_checksum_valid": 45
+    "source_file_checksum_valid": 150
   },
   "source_statuses": {
-    "verified_official": 45
+    "verified_official": 150
   },
   "sources": [
     {
@@ -25,6 +32,41 @@
     {
       "file": "DERMO/vichy.xlsx",
       "sha256": "d423f140948521b93f7825195a614e289527bdac6768634a8bfba8cff7d4720a",
+      "products": 15
+    },
+    {
+      "file": "DERMO/avene.xlsx",
+      "sha256": "56483c46e781459b0945ec15df34e57af15c38c85e4b855fb9a34fd94d034715",
+      "products": 15
+    },
+    {
+      "file": "DERMO/bioderma.xlsx",
+      "sha256": "8b4cd703e5e9d1835c1528b0876265c3b50e0a680d4ac399788a79fbc9cbb5e7",
+      "products": 15
+    },
+    {
+      "file": "DERMO/cetaphil.xlsx",
+      "sha256": "1f0d9842c198cc60df6b749d2879ad072de600583e9a5f9fe1e336ab0b8c8ad7",
+      "products": 15
+    },
+    {
+      "file": "DERMO/dr-or.xlsx",
+      "sha256": "4e89ceecf049a6bed6cb659f6f4052abe800d18b80e2ba4617726318f6acf01a",
+      "products": 15
+    },
+    {
+      "file": "DERMO/mustela.xlsx",
+      "sha256": "eb2f0c196354602560f56ff328331f0b3f6c8f5cfc040a5894d199ab179513c8",
+      "products": 15
+    },
+    {
+      "file": "DERMO/sebocalm.xlsx",
+      "sha256": "5ccf26bb90b09ddd87ccb073439c897bde8bd1ca10f7cb51d54c785cdbd538fb",
+      "products": 15
+    },
+    {
+      "file": "DERMO/uriage.xlsx",
+      "sha256": "f74ef50f2a43de219e8b6f2400985a84b0efc9b081bc3728dd240f2b2797e790",
       "products": 15
     }
   ],

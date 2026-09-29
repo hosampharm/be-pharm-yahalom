@@ -67,8 +67,9 @@ content is still a separate responsibility before production customer use.
 
 ## Dermo catalog
 
-`DERMO/cerave.xlsx`, `DERMO/la-roche-posay.xlsx`, and `DERMO/vichy.xlsx` supply
-45 products in an independent catalog. Run `python scripts/import_dermo.py` to
+Ten source workbooks in `DERMO/` supply 150 products in an independent catalog:
+CeraVe, La Roche-Posay, Vichy, Avène, Bioderma, Cetaphil, Dr. Or, Mustela,
+SeboCalm and Uriage (15 each). Run `python scripts/import_dermo.py` to
 rebuild `data/dermo.json`, `data/dermo.js`, and `data/dermo-import-report.json`.
 The workbooks are read without modification. Source rows, hashes, missing fields,
 and verification declarations are preserved. Barcode check digits are validated;

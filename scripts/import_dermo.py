@@ -7,7 +7,9 @@ import openpyxl
 from import_supplements import clean, valid_gtin
 
 ROOT = Path(__file__).resolve().parents[1]
-FILES = ('cerave.xlsx', 'la-roche-posay.xlsx', 'vichy.xlsx')
+FILES = ('cerave.xlsx', 'la-roche-posay.xlsx', 'vichy.xlsx', 'avene.xlsx',
+         'bioderma.xlsx', 'cetaphil.xlsx', 'dr-or.xlsx', 'mustela.xlsx',
+         'sebocalm.xlsx', 'uriage.xlsx')
 
 
 def read_records():

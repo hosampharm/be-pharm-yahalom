@@ -20,7 +20,9 @@ class DermoImportTests(unittest.TestCase):
 
     def test_counts_and_catalog_isolation(self):
         self.assertEqual(collections.Counter(r['brand'] for r in self.products),
-                         {'CeraVe': 15, 'La Roche-Posay': 15, 'Vichy': 15})
+                         {'CeraVe': 15, 'La Roche-Posay': 15, 'Vichy': 15,
+                          'Avène': 15, 'Bioderma': 15, 'Cetaphil': 15,
+                          'Dr. Or': 15, 'Mustela': 15, 'SeboCalm': 15, 'Uriage': 15})
         supplements = json.loads((ROOT / 'data/supplements.json').read_text(encoding='utf-8'))['products']
         self.assertEqual(len(supplements), 123)
         self.assertFalse({r['id'] for r in supplements} & {r['id'] for r in self.products})
