@@ -18,7 +18,7 @@ from concurrent.futures import ThreadPoolExecutor
 import openpyxl
 
 ROOT = Path(__file__).resolve().parents[1]
-FILES = ('altman.xlsx', 'nutricare.xlsx', 'solgar.xlsx', 'supherb.xlsx')
+FILES = ('VITAM/altman.xlsx', 'VITAM/nutricare.xlsx', 'VITAM/solgar.xlsx', 'VITAM/supherb.xlsx')
 DATA = ROOT / 'data'
 
 

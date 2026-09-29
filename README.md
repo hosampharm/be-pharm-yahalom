@@ -23,7 +23,7 @@ still require pharmacy review alongside the product information.
 
 ## Supplement catalog
 
-The four supplied workbooks are source snapshots. They are never edited by the
+The four supplied workbooks in `VITAM/` are source snapshots. They are never edited by the
 importer. `scripts/import_supplements.py` reads 123 populated rows and generates
 `data/supplements.json`, its browser-compatible `data/supplements.js` wrapper,
 and `data/import-report.json`. The wrapper intentionally supports `file://`
@@ -60,10 +60,26 @@ URL field. The customer link is omitted; its original value is retained in
 provenance and the issue is recorded in the import report. Its retailer link is
 preserved. Source links and remote images may change or be unavailable.
 
-The dermo search and scan screens remain placeholders. Supplement barcode lookup
+Supplement barcode lookup
 uses exact catalog identifiers; it is not camera scanning. A USB scanner that
 types into the search field can supply the barcode. Clinical review of supplied
 content is still a separate responsibility before production customer use.
+
+## Dermo catalog
+
+`DERMO/cerave.xlsx`, `DERMO/la-roche-posay.xlsx`, and `DERMO/vichy.xlsx` supply
+45 products in an independent catalog. Run `python scripts/import_dermo.py` to
+rebuild `data/dermo.json`, `data/dermo.js`, and `data/dermo-import-report.json`.
+The workbooks are read without modification. Source rows, hashes, missing fields,
+and verification declarations are preserved. Barcode check digits are validated;
+this is not independent verification of product identity or clinical content.
+
+Dermo search and barcode lookup use only the dermo catalog. The existing
+concern/skin journey filters exact pipe-separated tags from source records, using
+an intersection of the selected concern and skin type; it does not infer medical
+suitability or fill missing tags. No-match combinations remain empty. Product
+details preserve source information, warnings, links and status attribution.
+Both worlds support keyboard-style scanners, not camera capture.
 
 ## Deployment
 

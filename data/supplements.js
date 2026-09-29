@@ -3,22 +3,22 @@ window.SUPPLEMENT_CATALOG = {
   "schema_version": 1,
   "sources": [
     {
-      "file": "altman.xlsx",
+      "file": "VITAM/altman.xlsx",
       "sha256": "c88f97e0a2899cbb44f59add99c67fe27d9b93c12fd040736b43d46f167daf70",
       "products": 30
     },
     {
-      "file": "nutricare.xlsx",
+      "file": "VITAM/nutricare.xlsx",
       "sha256": "95e601b17589e761f2a406d4ddcd7df26edcab234f105659c790ada891887eaa",
       "products": 39
     },
     {
-      "file": "solgar.xlsx",
+      "file": "VITAM/solgar.xlsx",
       "sha256": "fbeabc8a3d1df94af733844ad9e07dc9871cae5ad71cbb90e8a84ac5e77cd8e8",
       "products": 22
     },
     {
-      "file": "supherb.xlsx",
+      "file": "VITAM/supherb.xlsx",
       "sha256": "d8b595b762972ca851971fddb2d5eb38f074dc5145d7d5f8b4b1a96221b03872",
       "products": 32
     }
@@ -55,7 +55,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "מארז ל-70 יום",
       "id": "altman-2",
       "provenance": {
-        "file": "altman.xlsx",
+        "file": "VITAM/altman.xlsx",
         "sheet": "Untitled",
         "row": 2,
         "sha256": "c88f97e0a2899cbb44f59add99c67fe27d9b93c12fd040736b43d46f167daf70"
@@ -95,7 +95,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "אריזה של 180+30 קפליות (ל-70 יום)",
       "id": "altman-3",
       "provenance": {
-        "file": "altman.xlsx",
+        "file": "VITAM/altman.xlsx",
         "sheet": "Untitled",
         "row": 3,
         "sha256": "c88f97e0a2899cbb44f59add99c67fe27d9b93c12fd040736b43d46f167daf70"
@@ -135,7 +135,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": null,
       "id": "altman-4",
       "provenance": {
-        "file": "altman.xlsx",
+        "file": "VITAM/altman.xlsx",
         "sheet": "Untitled",
         "row": 4,
         "sha256": "c88f97e0a2899cbb44f59add99c67fe27d9b93c12fd040736b43d46f167daf70"
@@ -175,7 +175,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": null,
       "id": "altman-5",
       "provenance": {
-        "file": "altman.xlsx",
+        "file": "VITAM/altman.xlsx",
         "sheet": "Untitled",
         "row": 5,
         "sha256": "c88f97e0a2899cbb44f59add99c67fe27d9b93c12fd040736b43d46f167daf70"
@@ -215,7 +215,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": null,
       "id": "altman-6",
       "provenance": {
-        "file": "altman.xlsx",
+        "file": "VITAM/altman.xlsx",
         "sheet": "Untitled",
         "row": 6,
         "sha256": "c88f97e0a2899cbb44f59add99c67fe27d9b93c12fd040736b43d46f167daf70"
@@ -255,7 +255,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": null,
       "id": "altman-7",
       "provenance": {
-        "file": "altman.xlsx",
+        "file": "VITAM/altman.xlsx",
         "sheet": "Untitled",
         "row": 7,
         "sha256": "c88f97e0a2899cbb44f59add99c67fe27d9b93c12fd040736b43d46f167daf70"
@@ -295,7 +295,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": null,
       "id": "altman-8",
       "provenance": {
-        "file": "altman.xlsx",
+        "file": "VITAM/altman.xlsx",
         "sheet": "Untitled",
         "row": 8,
         "sha256": "c88f97e0a2899cbb44f59add99c67fe27d9b93c12fd040736b43d46f167daf70"
@@ -335,7 +335,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": null,
       "id": "altman-9",
       "provenance": {
-        "file": "altman.xlsx",
+        "file": "VITAM/altman.xlsx",
         "sheet": "Untitled",
         "row": 9,
         "sha256": "c88f97e0a2899cbb44f59add99c67fe27d9b93c12fd040736b43d46f167daf70"
@@ -375,7 +375,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": null,
       "id": "altman-10",
       "provenance": {
-        "file": "altman.xlsx",
+        "file": "VITAM/altman.xlsx",
         "sheet": "Untitled",
         "row": 10,
         "sha256": "c88f97e0a2899cbb44f59add99c67fe27d9b93c12fd040736b43d46f167daf70"
@@ -415,7 +415,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": null,
       "id": "altman-11",
       "provenance": {
-        "file": "altman.xlsx",
+        "file": "VITAM/altman.xlsx",
         "sheet": "Untitled",
         "row": 11,
         "sha256": "c88f97e0a2899cbb44f59add99c67fe27d9b93c12fd040736b43d46f167daf70"
@@ -455,7 +455,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": null,
       "id": "altman-12",
       "provenance": {
-        "file": "altman.xlsx",
+        "file": "VITAM/altman.xlsx",
         "sheet": "Untitled",
         "row": 12,
         "sha256": "c88f97e0a2899cbb44f59add99c67fe27d9b93c12fd040736b43d46f167daf70"
@@ -495,7 +495,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "טבליות מציצה בטעם דובדבן לספיגה מהירה מתחת ללשון",
       "id": "altman-13",
       "provenance": {
-        "file": "altman.xlsx",
+        "file": "VITAM/altman.xlsx",
         "sheet": "Untitled",
         "row": 13,
         "sha256": "c88f97e0a2899cbb44f59add99c67fe27d9b93c12fd040736b43d46f167daf70"
@@ -535,7 +535,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "טכנולוגיית ספיגה פטנטית SiderAL",
       "id": "altman-14",
       "provenance": {
-        "file": "altman.xlsx",
+        "file": "VITAM/altman.xlsx",
         "sheet": "Untitled",
         "row": 14,
         "sha256": "c88f97e0a2899cbb44f59add99c67fe27d9b93c12fd040736b43d46f167daf70"
@@ -575,7 +575,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": null,
       "id": "altman-15",
       "provenance": {
-        "file": "altman.xlsx",
+        "file": "VITAM/altman.xlsx",
         "sheet": "Untitled",
         "row": 15,
         "sha256": "c88f97e0a2899cbb44f59add99c67fe27d9b93c12fd040736b43d46f167daf70"
@@ -615,7 +615,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "מגנזיום המופק ממעבדות ים המלח",
       "id": "altman-16",
       "provenance": {
-        "file": "altman.xlsx",
+        "file": "VITAM/altman.xlsx",
         "sheet": "Untitled",
         "row": 16,
         "sha256": "c88f97e0a2899cbb44f59add99c67fe27d9b93c12fd040736b43d46f167daf70"
@@ -655,7 +655,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": null,
       "id": "altman-17",
       "provenance": {
-        "file": "altman.xlsx",
+        "file": "VITAM/altman.xlsx",
         "sheet": "Untitled",
         "row": 17,
         "sha256": "c88f97e0a2899cbb44f59add99c67fe27d9b93c12fd040736b43d46f167daf70"
@@ -695,7 +695,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": null,
       "id": "altman-18",
       "provenance": {
-        "file": "altman.xlsx",
+        "file": "VITAM/altman.xlsx",
         "sheet": "Untitled",
         "row": 18,
         "sha256": "c88f97e0a2899cbb44f59add99c67fe27d9b93c12fd040736b43d46f167daf70"
@@ -735,7 +735,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": null,
       "id": "altman-19",
       "provenance": {
-        "file": "altman.xlsx",
+        "file": "VITAM/altman.xlsx",
         "sheet": "Untitled",
         "row": 19,
         "sha256": "c88f97e0a2899cbb44f59add99c67fe27d9b93c12fd040736b43d46f167daf70"
@@ -775,7 +775,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": null,
       "id": "altman-20",
       "provenance": {
-        "file": "altman.xlsx",
+        "file": "VITAM/altman.xlsx",
         "sheet": "Untitled",
         "row": 20,
         "sha256": "c88f97e0a2899cbb44f59add99c67fe27d9b93c12fd040736b43d46f167daf70"
@@ -815,7 +815,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": null,
       "id": "altman-21",
       "provenance": {
-        "file": "altman.xlsx",
+        "file": "VITAM/altman.xlsx",
         "sheet": "Untitled",
         "row": 21,
         "sha256": "c88f97e0a2899cbb44f59add99c67fe27d9b93c12fd040736b43d46f167daf70"
@@ -855,7 +855,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": null,
       "id": "altman-22",
       "provenance": {
-        "file": "altman.xlsx",
+        "file": "VITAM/altman.xlsx",
         "sheet": "Untitled",
         "row": 22,
         "sha256": "c88f97e0a2899cbb44f59add99c67fe27d9b93c12fd040736b43d46f167daf70"
@@ -895,7 +895,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": null,
       "id": "altman-23",
       "provenance": {
-        "file": "altman.xlsx",
+        "file": "VITAM/altman.xlsx",
         "sheet": "Untitled",
         "row": 23,
         "sha256": "c88f97e0a2899cbb44f59add99c67fe27d9b93c12fd040736b43d46f167daf70"
@@ -935,7 +935,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "ברזל בטכנולוגיה פטנטית SiderAL מותאם לילדים",
       "id": "altman-24",
       "provenance": {
-        "file": "altman.xlsx",
+        "file": "VITAM/altman.xlsx",
         "sheet": "Untitled",
         "row": 24,
         "sha256": "c88f97e0a2899cbb44f59add99c67fe27d9b93c12fd040736b43d46f167daf70"
@@ -975,7 +975,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": null,
       "id": "altman-25",
       "provenance": {
-        "file": "altman.xlsx",
+        "file": "VITAM/altman.xlsx",
         "sheet": "Untitled",
         "row": 25,
         "sha256": "c88f97e0a2899cbb44f59add99c67fe27d9b93c12fd040736b43d46f167daf70"
@@ -1015,7 +1015,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "צורת Ester-C לספיגה משופרת ועדינות לקיבה",
       "id": "altman-26",
       "provenance": {
-        "file": "altman.xlsx",
+        "file": "VITAM/altman.xlsx",
         "sheet": "Untitled",
         "row": 26,
         "sha256": "c88f97e0a2899cbb44f59add99c67fe27d9b93c12fd040736b43d46f167daf70"
@@ -1055,7 +1055,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": null,
       "id": "altman-27",
       "provenance": {
-        "file": "altman.xlsx",
+        "file": "VITAM/altman.xlsx",
         "sheet": "Untitled",
         "row": 27,
         "sha256": "c88f97e0a2899cbb44f59add99c67fe27d9b93c12fd040736b43d46f167daf70"
@@ -1095,7 +1095,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": null,
       "id": "altman-28",
       "provenance": {
-        "file": "altman.xlsx",
+        "file": "VITAM/altman.xlsx",
         "sheet": "Untitled",
         "row": 28,
         "sha256": "c88f97e0a2899cbb44f59add99c67fe27d9b93c12fd040736b43d46f167daf70"
@@ -1135,7 +1135,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": null,
       "id": "altman-29",
       "provenance": {
-        "file": "altman.xlsx",
+        "file": "VITAM/altman.xlsx",
         "sheet": "Untitled",
         "row": 29,
         "sha256": "c88f97e0a2899cbb44f59add99c67fe27d9b93c12fd040736b43d46f167daf70"
@@ -1175,7 +1175,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": null,
       "id": "altman-30",
       "provenance": {
-        "file": "altman.xlsx",
+        "file": "VITAM/altman.xlsx",
         "sheet": "Untitled",
         "row": 30,
         "sha256": "c88f97e0a2899cbb44f59add99c67fe27d9b93c12fd040736b43d46f167daf70"
@@ -1215,7 +1215,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "תמצית כורכום פטנטית Curcumin C3 בשילוב Bioperine לשיפור הספיגה",
       "id": "altman-31",
       "provenance": {
-        "file": "altman.xlsx",
+        "file": "VITAM/altman.xlsx",
         "sheet": "Untitled",
         "row": 31,
         "sha256": "c88f97e0a2899cbb44f59add99c67fe27d9b93c12fd040736b43d46f167daf70"
@@ -1255,7 +1255,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "מבוסס על שמן MCT צמחי לשיפור הספיגה",
       "id": "nutricare-2",
       "provenance": {
-        "file": "nutricare.xlsx",
+        "file": "VITAM/nutricare.xlsx",
         "sheet": "Untitled",
         "row": 2,
         "sha256": "95e601b17589e761f2a406d4ddcd7df26edcab234f105659c790ada891887eaa"
@@ -1295,7 +1295,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": null,
       "id": "nutricare-3",
       "provenance": {
-        "file": "nutricare.xlsx",
+        "file": "VITAM/nutricare.xlsx",
         "sheet": "Untitled",
         "row": 3,
         "sha256": "95e601b17589e761f2a406d4ddcd7df26edcab234f105659c790ada891887eaa"
@@ -1335,7 +1335,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "סביבה שומנית לספיגה מרבית, אריזת חיסכון של 180 כמוסות (קיים גם ב-90 כמוסות)",
       "id": "nutricare-4",
       "provenance": {
-        "file": "nutricare.xlsx",
+        "file": "VITAM/nutricare.xlsx",
         "sheet": "Untitled",
         "row": 4,
         "sha256": "95e601b17589e761f2a406d4ddcd7df26edcab234f105659c790ada891887eaa"
@@ -1375,7 +1375,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "צורת קואנזים פעילה ביולוגית (מתילקובלאמין) לספיגה תת-לשונית ישירה למחזור הדם",
       "id": "nutricare-5",
       "provenance": {
-        "file": "nutricare.xlsx",
+        "file": "VITAM/nutricare.xlsx",
         "sheet": "Untitled",
         "row": 5,
         "sha256": "95e601b17589e761f2a406d4ddcd7df26edcab234f105659c790ada891887eaa"
@@ -1415,7 +1415,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "טכנולוגיית נאנו-חלקיקים ליפוזומלית להגנה מפני חומציות הקיבה ושיפור זמינות ביולוגית",
       "id": "nutricare-6",
       "provenance": {
-        "file": "nutricare.xlsx",
+        "file": "VITAM/nutricare.xlsx",
         "sheet": "Untitled",
         "row": 6,
         "sha256": "95e601b17589e761f2a406d4ddcd7df26edcab234f105659c790ada891887eaa"
@@ -1455,7 +1455,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "טבעוני (Vegan Friendly), בעל תו תקן GMP",
       "id": "nutricare-7",
       "provenance": {
-        "file": "nutricare.xlsx",
+        "file": "VITAM/nutricare.xlsx",
         "sheet": "Untitled",
         "row": 7,
         "sha256": "95e601b17589e761f2a406d4ddcd7df26edcab234f105659c790ada891887eaa"
@@ -1495,7 +1495,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "פורמולת סידן אסקורבט עדינה וידידותית למערכת העיכול",
       "id": "nutricare-8",
       "provenance": {
-        "file": "nutricare.xlsx",
+        "file": "VITAM/nutricare.xlsx",
         "sheet": "Untitled",
         "row": 8,
         "sha256": "95e601b17589e761f2a406d4ddcd7df26edcab234f105659c790ada891887eaa"
@@ -1535,7 +1535,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "ציפוי פוספוליפידי מלציטין חמניות לספיגה אופטימלית ללא תופעות לוואי במערכת העיכול",
       "id": "nutricare-9",
       "provenance": {
-        "file": "nutricare.xlsx",
+        "file": "VITAM/nutricare.xlsx",
         "sheet": "Untitled",
         "row": 9,
         "sha256": "95e601b17589e761f2a406d4ddcd7df26edcab234f105659c790ada891887eaa"
@@ -1575,7 +1575,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "פותח בשיתוף חברת Capsoil; הליפוזום מאפשר חדירה ישירה לאברי המטרה ללא גירוי קיבתי",
       "id": "nutricare-10",
       "provenance": {
-        "file": "nutricare.xlsx",
+        "file": "VITAM/nutricare.xlsx",
         "sheet": "Untitled",
         "row": 10,
         "sha256": "95e601b17589e761f2a406d4ddcd7df26edcab234f105659c790ada891887eaa"
@@ -1615,7 +1615,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "ספיגה וזמינות ביולוגית גבוהות הודות לקשירה החומצית האורגנית עם ויטמין B6",
       "id": "nutricare-11",
       "provenance": {
-        "file": "nutricare.xlsx",
+        "file": "VITAM/nutricare.xlsx",
         "sheet": "Untitled",
         "row": 11,
         "sha256": "95e601b17589e761f2a406d4ddcd7df26edcab234f105659c790ada891887eaa"
@@ -1655,7 +1655,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "תורם להפחתת עייפות, תשישות, תפקוד תקין של השרירים ומערכת העצבים",
       "id": "nutricare-12",
       "provenance": {
-        "file": "nutricare.xlsx",
+        "file": "VITAM/nutricare.xlsx",
         "sheet": "Untitled",
         "row": 12,
         "sha256": "95e601b17589e761f2a406d4ddcd7df26edcab234f105659c790ada891887eaa"
@@ -1695,7 +1695,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "שילוב סינרגטי מתקדם של מגנזיום וחומצה מאלית התורם למעגל קרבס והפקת אנרגיה בשריר",
       "id": "nutricare-13",
       "provenance": {
-        "file": "nutricare.xlsx",
+        "file": "VITAM/nutricare.xlsx",
         "sheet": "Untitled",
         "row": 13,
         "sha256": "95e601b17589e761f2a406d4ddcd7df26edcab234f105659c790ada891887eaa"
@@ -1735,7 +1735,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "שילוב ייחודי של מגנזיום עם טאורין התומך במערכת הקרדיווסקולרית והעצבית",
       "id": "nutricare-14",
       "provenance": {
-        "file": "nutricare.xlsx",
+        "file": "VITAM/nutricare.xlsx",
         "sheet": "Untitled",
         "row": 14,
         "sha256": "95e601b17589e761f2a406d4ddcd7df26edcab234f105659c790ada891887eaa"
@@ -1775,7 +1775,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "ריכוז גבוה במיוחד של מגנזיום אלמנטרי; ניתן לנטילה לפני השינה ללא חשש מצרבות",
       "id": "nutricare-15",
       "provenance": {
-        "file": "nutricare.xlsx",
+        "file": "VITAM/nutricare.xlsx",
         "sheet": "Untitled",
         "row": 15,
         "sha256": "95e601b17589e761f2a406d4ddcd7df26edcab234f105659c790ada891887eaa"
@@ -1815,7 +1815,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "קשירה עם חומצה פיקולינית לספיגה מיטבית ויעילה של המינרל במעי",
       "id": "nutricare-16",
       "provenance": {
-        "file": "nutricare.xlsx",
+        "file": "VITAM/nutricare.xlsx",
         "sheet": "Untitled",
         "row": 16,
         "sha256": "95e601b17589e761f2a406d4ddcd7df26edcab234f105659c790ada891887eaa"
@@ -1855,7 +1855,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "פורמולה מתקדמת של 25 מיליארד חיידקים פרוביוטיים מ-7 זנים פעילים מגוונים, בתוספת 200 מ\"ג חומצת האמינו ל-גלוטמין לתמיכה ברירית המעי",
       "id": "nutricare-17",
       "provenance": {
-        "file": "nutricare.xlsx",
+        "file": "VITAM/nutricare.xlsx",
         "sheet": "Untitled",
         "row": 17,
         "sha256": "95e601b17589e761f2a406d4ddcd7df26edcab234f105659c790ada891887eaa"
@@ -1895,7 +1895,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "אינו ממכר ואינו מכיל צמח סנה; נמכר כבקבוק בודד של 60 כמוסות או כמארז זוג של 120 כמוסות",
       "id": "nutricare-18",
       "provenance": {
-        "file": "nutricare.xlsx",
+        "file": "VITAM/nutricare.xlsx",
         "sheet": "Untitled",
         "row": 18,
         "sha256": "95e601b17589e761f2a406d4ddcd7df26edcab234f105659c790ada891887eaa"
@@ -1935,7 +1935,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "שומר על המבנה המרחבי הטבעי של חלבון הקולגן להשפעה אימונולוגית ממוקדת על הסחוס",
       "id": "nutricare-19",
       "provenance": {
-        "file": "nutricare.xlsx",
+        "file": "VITAM/nutricare.xlsx",
         "sheet": "Untitled",
         "row": 19,
         "sha256": "95e601b17589e761f2a406d4ddcd7df26edcab234f105659c790ada891887eaa"
@@ -1975,7 +1975,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "למעלה מ-90% חלבון, בטעם וריח וניל עדין, נמס במהירות ללא טעם לוואי",
       "id": "nutricare-20",
       "provenance": {
-        "file": "nutricare.xlsx",
+        "file": "VITAM/nutricare.xlsx",
         "sheet": "Untitled",
         "row": 20,
         "sha256": "95e601b17589e761f2a406d4ddcd7df26edcab234f105659c790ada891887eaa"
@@ -2015,7 +2015,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "מכיל שמן זרעי רימונים בריכוז גבוה של חומצה פוניצית (נוגד חמצון עוצמתי) בטכנולוגיית נאנו",
       "id": "nutricare-21",
       "provenance": {
-        "file": "nutricare.xlsx",
+        "file": "VITAM/nutricare.xlsx",
         "sheet": "Untitled",
         "row": 21,
         "sha256": "95e601b17589e761f2a406d4ddcd7df26edcab234f105659c790ada891887eaa"
@@ -2055,7 +2055,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "סוכר טבעי פשוט (D-מאנוז) הנקשר לחיידקי E. coli ומסייע בשטיפתם מדרכי השתן",
       "id": "nutricare-22",
       "provenance": {
-        "file": "nutricare.xlsx",
+        "file": "VITAM/nutricare.xlsx",
         "sheet": "Untitled",
         "row": 22,
         "sha256": "95e601b17589e761f2a406d4ddcd7df26edcab234f105659c790ada891887eaa"
@@ -2095,7 +2095,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": null,
       "id": "nutricare-23",
       "provenance": {
-        "file": "nutricare.xlsx",
+        "file": "VITAM/nutricare.xlsx",
         "sheet": "Untitled",
         "row": 23,
         "sha256": "95e601b17589e761f2a406d4ddcd7df26edcab234f105659c790ada891887eaa"
@@ -2135,7 +2135,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "עשיר בחלבון צמחי, כלורופיל, ויטמינים, מינרלים ונוגדי חמצון",
       "id": "nutricare-24",
       "provenance": {
-        "file": "nutricare.xlsx",
+        "file": "VITAM/nutricare.xlsx",
         "sheet": "Untitled",
         "row": 24,
         "sha256": "95e601b17589e761f2a406d4ddcd7df26edcab234f105659c790ada891887eaa"
@@ -2175,7 +2175,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "עומד בדרישות תקן ניהול איכות ISO 9001:2015 של מכון התקנים הישראלי",
       "id": "nutricare-25",
       "provenance": {
-        "file": "nutricare.xlsx",
+        "file": "VITAM/nutricare.xlsx",
         "sheet": "Untitled",
         "row": 25,
         "sha256": "95e601b17589e761f2a406d4ddcd7df26edcab234f105659c790ada891887eaa"
@@ -2215,7 +2215,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "עשיר בקרבקרול (Carvacrol), רכיב אנטי-בקטריאלי ואנטי-ויראלי טבעי",
       "id": "nutricare-26",
       "provenance": {
-        "file": "nutricare.xlsx",
+        "file": "VITAM/nutricare.xlsx",
         "sheet": "Untitled",
         "row": 26,
         "sha256": "95e601b17589e761f2a406d4ddcd7df26edcab234f105659c790ada891887eaa"
@@ -2255,7 +2255,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "חלופה נוחה בבליעה לטיפות שמן אורגנו ללא טעם חריף",
       "id": "nutricare-27",
       "provenance": {
-        "file": "nutricare.xlsx",
+        "file": "VITAM/nutricare.xlsx",
         "sheet": "Untitled",
         "row": 27,
         "sha256": "95e601b17589e761f2a406d4ddcd7df26edcab234f105659c790ada891887eaa"
@@ -2295,7 +2295,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "קיים באריזות של 30 ו-60 טבליות; מולטי-ויטמין ירוק מועשר ברכיבים נוגדי חמצון",
       "id": "nutricare-28",
       "provenance": {
-        "file": "nutricare.xlsx",
+        "file": "VITAM/nutricare.xlsx",
         "sheet": "Untitled",
         "row": 28,
         "sha256": "95e601b17589e761f2a406d4ddcd7df26edcab234f105659c790ada891887eaa"
@@ -2335,7 +2335,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "שילוב משולש של פיטוסטרולים, פוליקוסנול ו-Q10 לתמיכה בהורדת רמות LDL כולסטרול בדם",
       "id": "nutricare-29",
       "provenance": {
-        "file": "nutricare.xlsx",
+        "file": "VITAM/nutricare.xlsx",
         "sheet": "Untitled",
         "row": 29,
         "sha256": "95e601b17589e761f2a406d4ddcd7df26edcab234f105659c790ada891887eaa"
@@ -2375,7 +2375,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "טבליות ללעיסה נוחות לשימוש ללא צורך בשייקר או ערבוב במים",
       "id": "nutricare-30",
       "provenance": {
-        "file": "nutricare.xlsx",
+        "file": "VITAM/nutricare.xlsx",
         "sheet": "Untitled",
         "row": 30,
         "sha256": "95e601b17589e761f2a406d4ddcd7df26edcab234f105659c790ada891887eaa"
@@ -2415,7 +2415,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "פורמולה סינרגטית מבוססת מערכת אנדוקנבינואידית עם PEA ונאנו בטא-קריופילן להרגעה והקלה",
       "id": "nutricare-31",
       "provenance": {
-        "file": "nutricare.xlsx",
+        "file": "VITAM/nutricare.xlsx",
         "sheet": "Untitled",
         "row": 31,
         "sha256": "95e601b17589e761f2a406d4ddcd7df26edcab234f105659c790ada891887eaa"
@@ -2455,7 +2455,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "תמצית מרוכזת עם ציפוי מיוחד למניעת ריח לוואי של שום",
       "id": "nutricare-32",
       "provenance": {
-        "file": "nutricare.xlsx",
+        "file": "VITAM/nutricare.xlsx",
         "sheet": "Untitled",
         "row": 32,
         "sha256": "95e601b17589e761f2a406d4ddcd7df26edcab234f105659c790ada891887eaa"
@@ -2495,7 +2495,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "פטנט של חברת Capsoil להפיכת הכורכומינואידים לנאנו חלקיקים בטכנולוגיית מיקרו-טיפות לספיגה מוגברת פי עשרות מונים",
       "id": "nutricare-33",
       "provenance": {
-        "file": "nutricare.xlsx",
+        "file": "VITAM/nutricare.xlsx",
         "sheet": "Untitled",
         "row": 33,
         "sha256": "95e601b17589e761f2a406d4ddcd7df26edcab234f105659c790ada891887eaa"
@@ -2535,7 +2535,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "שילוב משולש של כורכומין, לבונה (בוסוויליה) ופלפל שחור (פיפרין) לשיפור הספיגה ולפעילות אנטי-דלקתית",
       "id": "nutricare-34",
       "provenance": {
-        "file": "nutricare.xlsx",
+        "file": "VITAM/nutricare.xlsx",
         "sheet": "Untitled",
         "row": 34,
         "sha256": "95e601b17589e761f2a406d4ddcd7df26edcab234f105659c790ada891887eaa"
@@ -2575,7 +2575,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "חלקיקי נאנו של שמן דגים לזמינות ביולוגית גבוהה במיוחד ללא ריח וטעם לוואי",
       "id": "nutricare-35",
       "provenance": {
-        "file": "nutricare.xlsx",
+        "file": "VITAM/nutricare.xlsx",
         "sheet": "Untitled",
         "row": 35,
         "sha256": "95e601b17589e761f2a406d4ddcd7df26edcab234f105659c790ada891887eaa"
@@ -2615,7 +2615,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "פורמולה עשירה ומקיפה לחיזוק שורשי השיער ומניעת נשירה בגברים ובנשים",
       "id": "nutricare-36",
       "provenance": {
-        "file": "nutricare.xlsx",
+        "file": "VITAM/nutricare.xlsx",
         "sheet": "Untitled",
         "row": 36,
         "sha256": "95e601b17589e761f2a406d4ddcd7df26edcab234f105659c790ada891887eaa"
@@ -2655,7 +2655,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "שילוב סינרגטי של קו אנזים Q10, מינרלים וצמחי מרפא מסורתיים (עלי זית, עוזרר ושום) לתמיכה באיזון לחץ הדם",
       "id": "nutricare-37",
       "provenance": {
-        "file": "nutricare.xlsx",
+        "file": "VITAM/nutricare.xlsx",
         "sheet": "Untitled",
         "row": 37,
         "sha256": "95e601b17589e761f2a406d4ddcd7df26edcab234f105659c790ada891887eaa"
@@ -2695,7 +2695,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "נוגד חמצון עוצמתי וקו-פקטור חיוני לתהליכי נשימה תאית והפקת אנרגיה (ATP) במיטוכונדריה, מומלץ במיוחד לנוטלי סטטינים",
       "id": "nutricare-38",
       "provenance": {
-        "file": "nutricare.xlsx",
+        "file": "VITAM/nutricare.xlsx",
         "sheet": "Untitled",
         "row": 38,
         "sha256": "95e601b17589e761f2a406d4ddcd7df26edcab234f105659c790ada891887eaa"
@@ -2735,7 +2735,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "תואם להמלצה הרשמית של משרד הבריאות הישראלי לנשים בגיל הפוריות למניעת מומים מולדים במערכת העצבים של העובר",
       "id": "nutricare-39",
       "provenance": {
-        "file": "nutricare.xlsx",
+        "file": "VITAM/nutricare.xlsx",
         "sheet": "Untitled",
         "row": 39,
         "sha256": "95e601b17589e761f2a406d4ddcd7df26edcab234f105659c790ada891887eaa"
@@ -2775,7 +2775,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "פורמולה טבעית מבית נוטריקר המסייעת להירדמות רגועה ואיכות השינה",
       "id": "nutricare-40",
       "provenance": {
-        "file": "nutricare.xlsx",
+        "file": "VITAM/nutricare.xlsx",
         "sheet": "Untitled",
         "row": 40,
         "sha256": "95e601b17589e761f2a406d4ddcd7df26edcab234f105659c790ada891887eaa"
@@ -2815,7 +2815,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "פורמולה עשירה במינרלים של אלביון (Albion) וברזל עדין",
       "id": "solgar-2",
       "provenance": {
-        "file": "solgar.xlsx",
+        "file": "VITAM/solgar.xlsx",
         "sheet": "Untitled",
         "row": 2,
         "sha256": "fbeabc8a3d1df94af733844ad9e07dc9871cae5ad71cbb90e8a84ac5e77cd8e8"
@@ -2855,7 +2855,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "ברזל פטנטי של חברת אלביון שאינו גורם לעצירות ולתופעות לוואי במערכת העיכול",
       "id": "solgar-3",
       "provenance": {
-        "file": "solgar.xlsx",
+        "file": "VITAM/solgar.xlsx",
         "sheet": "Untitled",
         "row": 3,
         "sha256": "fbeabc8a3d1df94af733844ad9e07dc9871cae5ad71cbb90e8a84ac5e77cd8e8"
@@ -2895,7 +2895,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "קשירה אורגנית לציטראט לספיגה יעילה שאינה תלויה בחומציות הקיבה",
       "id": "solgar-4",
       "provenance": {
-        "file": "solgar.xlsx",
+        "file": "VITAM/solgar.xlsx",
         "sheet": "Untitled",
         "row": 4,
         "sha256": "fbeabc8a3d1df94af733844ad9e07dc9871cae5ad71cbb90e8a84ac5e77cd8e8"
@@ -2935,7 +2935,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "טבליות קטנות ונוחות לבליעה, ויטמין B6 תורם לשיפור חדירת המגנזיום לתאים",
       "id": "solgar-5",
       "provenance": {
-        "file": "solgar.xlsx",
+        "file": "VITAM/solgar.xlsx",
         "sheet": "Untitled",
         "row": 5,
         "sha256": "fbeabc8a3d1df94af733844ad9e07dc9871cae5ad71cbb90e8a84ac5e77cd8e8"
@@ -2975,7 +2975,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "ריכוז משולש (Triple Strength) מדגי ים קטנים מטוהרים ממתכות כבדות",
       "id": "solgar-6",
       "provenance": {
-        "file": "solgar.xlsx",
+        "file": "VITAM/solgar.xlsx",
         "sheet": "Untitled",
         "row": 6,
         "sha256": "fbeabc8a3d1df94af733844ad9e07dc9871cae5ad71cbb90e8a84ac5e77cd8e8"
@@ -3015,7 +3015,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "פורמולה מועשרת בנוגדי חמצון, ברזל קל לעיכול ומינרלים בקשירה אורגנית",
       "id": "solgar-7",
       "provenance": {
-        "file": "solgar.xlsx",
+        "file": "VITAM/solgar.xlsx",
         "sheet": "Untitled",
         "row": 7,
         "sha256": "fbeabc8a3d1df94af733844ad9e07dc9871cae5ad71cbb90e8a84ac5e77cd8e8"
@@ -3055,7 +3055,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "פורמולה ייעודית לגברים, אינה מכילה ברזל ומכילה נוגדי חמצון דוגמת ליקופן",
       "id": "solgar-8",
       "provenance": {
-        "file": "solgar.xlsx",
+        "file": "VITAM/solgar.xlsx",
         "sheet": "Untitled",
         "row": 8,
         "sha256": "fbeabc8a3d1df94af733844ad9e07dc9871cae5ad71cbb90e8a84ac5e77cd8e8"
@@ -3095,7 +3095,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "מותאם להנחיות משרד הבריאות לחומצה פולית וברזל עדין לנשים הרות",
       "id": "solgar-9",
       "provenance": {
-        "file": "solgar.xlsx",
+        "file": "VITAM/solgar.xlsx",
         "sheet": "Untitled",
         "row": 9,
         "sha256": "fbeabc8a3d1df94af733844ad9e07dc9871cae5ad71cbb90e8a84ac5e77cd8e8"
@@ -3135,7 +3135,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "ויטמין C בפטנט Ester-C שאינו חומצי, עדין לקיבה ושוהה עד 24 שעות בתאי הדם",
       "id": "solgar-10",
       "provenance": {
-        "file": "solgar.xlsx",
+        "file": "VITAM/solgar.xlsx",
         "sheet": "Untitled",
         "row": 10,
         "sha256": "fbeabc8a3d1df94af733844ad9e07dc9871cae5ad71cbb90e8a84ac5e77cd8e8"
@@ -3175,7 +3175,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "מינון מוגבר של 1,000 מ\"ג ויטמין C פטנטי לא חומצי בטבליה אחת",
       "id": "solgar-11",
       "provenance": {
-        "file": "solgar.xlsx",
+        "file": "VITAM/solgar.xlsx",
         "sheet": "Untitled",
         "row": 11,
         "sha256": "fbeabc8a3d1df94af733844ad9e07dc9871cae5ad71cbb90e8a84ac5e77cd8e8"
@@ -3215,7 +3215,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "מופק מכבד דגים מטוהר (ללא מתכות כבדות וללא ויטמין A)",
       "id": "solgar-12",
       "provenance": {
-        "file": "solgar.xlsx",
+        "file": "VITAM/solgar.xlsx",
         "sheet": "Untitled",
         "row": 12,
         "sha256": "fbeabc8a3d1df94af733844ad9e07dc9871cae5ad71cbb90e8a84ac5e77cd8e8"
@@ -3255,7 +3255,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "טבליות לעיסה בטעם פירות טבעי למתקשים בבליעה",
       "id": "solgar-13",
       "provenance": {
-        "file": "solgar.xlsx",
+        "file": "VITAM/solgar.xlsx",
         "sheet": "Untitled",
         "row": 13,
         "sha256": "fbeabc8a3d1df94af733844ad9e07dc9871cae5ad71cbb90e8a84ac5e77cd8e8"
@@ -3295,7 +3295,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "ספיגה תת-לשונית עוקפת את מערכת העיכול ואינה תלויה בגורם הפנימי (Intrinsic Factor)",
       "id": "solgar-14",
       "provenance": {
-        "file": "solgar.xlsx",
+        "file": "VITAM/solgar.xlsx",
         "sheet": "Untitled",
         "row": 14,
         "sha256": "fbeabc8a3d1df94af733844ad9e07dc9871cae5ad71cbb90e8a84ac5e77cd8e8"
@@ -3335,7 +3335,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "הנגזרת הקואנזימטית הפעילה והטבעית של B12 בטבליות מציצה בטעם דובדבן",
       "id": "solgar-15",
       "provenance": {
-        "file": "solgar.xlsx",
+        "file": "VITAM/solgar.xlsx",
         "sheet": "Untitled",
         "row": 15,
         "sha256": "fbeabc8a3d1df94af733844ad9e07dc9871cae5ad71cbb90e8a84ac5e77cd8e8"
@@ -3375,7 +3375,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "שחרור מושהה (Sustained Release) בתוספת בסיס צמחי טבעי להגברת הספיגה",
       "id": "solgar-16",
       "provenance": {
-        "file": "solgar.xlsx",
+        "file": "VITAM/solgar.xlsx",
         "sheet": "Untitled",
         "row": 16,
         "sha256": "fbeabc8a3d1df94af733844ad9e07dc9871cae5ad71cbb90e8a84ac5e77cd8e8"
@@ -3415,7 +3415,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "פורמולה עטורת פרסים בינלאומיים לבניית קולגן וקרטין לעור, שיער וציפורניים",
       "id": "solgar-17",
       "provenance": {
-        "file": "solgar.xlsx",
+        "file": "VITAM/solgar.xlsx",
         "sheet": "Untitled",
         "row": 17,
         "sha256": "fbeabc8a3d1df94af733844ad9e07dc9871cae5ad71cbb90e8a84ac5e77cd8e8"
@@ -3455,7 +3455,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "חיוני לתהליכי חילוף חומרים, מתאים למצבי נשירת שיער וציפורניים סדוקות",
       "id": "solgar-18",
       "provenance": {
-        "file": "solgar.xlsx",
+        "file": "VITAM/solgar.xlsx",
         "sheet": "Untitled",
         "row": 18,
         "sha256": "fbeabc8a3d1df94af733844ad9e07dc9871cae5ad71cbb90e8a84ac5e77cd8e8"
@@ -3495,7 +3495,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "קשירה לחומצה פיקולינית מספקת ספיגה אופטימלית במערכת העיכול",
       "id": "solgar-19",
       "provenance": {
-        "file": "solgar.xlsx",
+        "file": "VITAM/solgar.xlsx",
         "sheet": "Untitled",
         "row": 19,
         "sha256": "fbeabc8a3d1df94af733844ad9e07dc9871cae5ad71cbb90e8a84ac5e77cd8e8"
@@ -3535,7 +3535,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "פטנט מיסלרי המאפשר ספיגה פי 185 מכורכומין סטנדרטי, ללא תוספת פיפרין",
       "id": "solgar-20",
       "provenance": {
-        "file": "solgar.xlsx",
+        "file": "VITAM/solgar.xlsx",
         "sheet": "Untitled",
         "row": 20,
         "sha256": "fbeabc8a3d1df94af733844ad9e07dc9871cae5ad71cbb90e8a84ac5e77cd8e8",
@@ -3578,7 +3578,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "חיידקים בציפוי כפול פטנטי עמיד לחומציות הקיבה, יציב בטמפרטורת החדר",
       "id": "solgar-21",
       "provenance": {
-        "file": "solgar.xlsx",
+        "file": "VITAM/solgar.xlsx",
         "sheet": "Untitled",
         "row": 21,
         "sha256": "fbeabc8a3d1df94af733844ad9e07dc9871cae5ad71cbb90e8a84ac5e77cd8e8"
@@ -3618,7 +3618,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "שילוב סינרגטי יעיל במיוחד לתמיכה בעונות מעבר ובמצבי אלרגיה עונתית",
       "id": "solgar-22",
       "provenance": {
-        "file": "solgar.xlsx",
+        "file": "VITAM/solgar.xlsx",
         "sheet": "Untitled",
         "row": 22,
         "sha256": "fbeabc8a3d1df94af733844ad9e07dc9871cae5ad71cbb90e8a84ac5e77cd8e8"
@@ -3658,7 +3658,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "נגזרת טבעית ופעילה מטאפולין (L-Methylfolate) שאינה תלויה באנזים MTHFR",
       "id": "solgar-23",
       "provenance": {
-        "file": "solgar.xlsx",
+        "file": "VITAM/solgar.xlsx",
         "sheet": "Untitled",
         "row": 23,
         "sha256": "fbeabc8a3d1df94af733844ad9e07dc9871cae5ad71cbb90e8a84ac5e77cd8e8"
@@ -3698,7 +3698,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "פורמולה מותאמת לגברים להשלמה תזונתית יומיומית מקיפה.",
       "id": "supherb-2",
       "provenance": {
-        "file": "supherb.xlsx",
+        "file": "VITAM/supherb.xlsx",
         "sheet": "Untitled",
         "row": 2,
         "sha256": "d8b595b762972ca851971fddb2d5eb38f074dc5145d7d5f8b4b1a96221b03872"
@@ -3738,7 +3738,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "פורמולה עשירה במגנזיום במינון גבוה (200 מ\"ג) וברזל עדין וקל לעיכול.",
       "id": "supherb-3",
       "provenance": {
-        "file": "supherb.xlsx",
+        "file": "VITAM/supherb.xlsx",
         "sheet": "Untitled",
         "row": 3,
         "sha256": "d8b595b762972ca851971fddb2d5eb38f074dc5145d7d5f8b4b1a96221b03872"
@@ -3778,7 +3778,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "מולטי ויטמין יומי מועשר במגנזיום בקשירה אורגנית לשיפור הספיגה.",
       "id": "supherb-4",
       "provenance": {
-        "file": "supherb.xlsx",
+        "file": "VITAM/supherb.xlsx",
         "sheet": "Untitled",
         "row": 4,
         "sha256": "d8b595b762972ca851971fddb2d5eb38f074dc5145d7d5f8b4b1a96221b03872"
@@ -3818,7 +3818,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "פורמולה ייעודית מקיפה לספורטאים ומתאמנים.",
       "id": "supherb-5",
       "provenance": {
-        "file": "supherb.xlsx",
+        "file": "VITAM/supherb.xlsx",
         "sheet": "Untitled",
         "row": 5,
         "sha256": "d8b595b762972ca851971fddb2d5eb38f074dc5145d7d5f8b4b1a96221b03872"
@@ -3858,7 +3858,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "פטנט טכנולוגי עולמי המאפשר נטילת תוסף היריון בציפוי גומי לעיסה בטעם דובדבן-ענבים, ללא תוספת סוכר.",
       "id": "supherb-6",
       "provenance": {
-        "file": "supherb.xlsx",
+        "file": "VITAM/supherb.xlsx",
         "sheet": "Untitled",
         "row": 6,
         "sha256": "d8b595b762972ca851971fddb2d5eb38f074dc5145d7d5f8b4b1a96221b03872"
@@ -3898,7 +3898,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "פורמולת פרנטל קלאסית מובילה בישראל.",
       "id": "supherb-7",
       "provenance": {
-        "file": "supherb.xlsx",
+        "file": "VITAM/supherb.xlsx",
         "sheet": "Untitled",
         "row": 7,
         "sha256": "d8b595b762972ca851971fddb2d5eb38f074dc5145d7d5f8b4b1a96221b03872"
@@ -3938,7 +3938,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "פטנט היהלום של הציפוי הכפול להגנה מפני חומציות הקיבה וחום.",
       "id": "supherb-8",
       "provenance": {
-        "file": "supherb.xlsx",
+        "file": "VITAM/supherb.xlsx",
         "sheet": "Untitled",
         "row": 8,
         "sha256": "d8b595b762972ca851971fddb2d5eb38f074dc5145d7d5f8b4b1a96221b03872"
@@ -3978,7 +3978,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "פורמולה מועשרת בזן הפטנטי L. reuteri.",
       "id": "supherb-9",
       "provenance": {
-        "file": "supherb.xlsx",
+        "file": "VITAM/supherb.xlsx",
         "sheet": "Untitled",
         "row": 9,
         "sha256": "d8b595b762972ca851971fddb2d5eb38f074dc5145d7d5f8b4b1a96221b03872"
@@ -4018,7 +4018,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "פורמולה פרוביוטית ייעודית לנשים לתמיכה בבריאות הנרתיק ומערכת העיכול.",
       "id": "supherb-10",
       "provenance": {
-        "file": "supherb.xlsx",
+        "file": "VITAM/supherb.xlsx",
         "sheet": "Untitled",
         "row": 10,
         "sha256": "d8b595b762972ca851971fddb2d5eb38f074dc5145d7d5f8b4b1a96221b03872"
@@ -4058,7 +4058,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "ריכוז עוצמתי של 55 מיליארד חיידקים פרוביוטיים בכמוסה אחת, ויגן פרנדלי.",
       "id": "supherb-11",
       "provenance": {
-        "file": "supherb.xlsx",
+        "file": "VITAM/supherb.xlsx",
         "sheet": "Untitled",
         "row": 11,
         "sha256": "d8b595b762972ca851971fddb2d5eb38f074dc5145d7d5f8b4b1a96221b03872"
@@ -4098,7 +4098,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "פרוביוטיקה בשחרור מושהה המיועדת להגנה ושיקום פלורת המעי בזמן נטילת אנטיביוטיקה.",
       "id": "supherb-12",
       "provenance": {
-        "file": "supherb.xlsx",
+        "file": "VITAM/supherb.xlsx",
         "sheet": "Untitled",
         "row": 12,
         "sha256": "d8b595b762972ca851971fddb2d5eb38f074dc5145d7d5f8b4b1a96221b03872"
@@ -4138,7 +4138,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "פורמולה פרוביוטית קלאסית בתוספת סיבים תזונתיים פרה-ביוטיים.",
       "id": "supherb-13",
       "provenance": {
-        "file": "supherb.xlsx",
+        "file": "VITAM/supherb.xlsx",
         "sheet": "Untitled",
         "row": 13,
         "sha256": "d8b595b762972ca851971fddb2d5eb38f074dc5145d7d5f8b4b1a96221b03872"
@@ -4178,7 +4178,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "שילוב ייחודי של תמצית חמוציות מרוכזת עם פרוביוטיקה וויטמין C להגנה על דרכי השתן.",
       "id": "supherb-14",
       "provenance": {
-        "file": "supherb.xlsx",
+        "file": "VITAM/supherb.xlsx",
         "sheet": "Untitled",
         "row": 14,
         "sha256": "d8b595b762972ca851971fddb2d5eb38f074dc5145d7d5f8b4b1a96221b03872"
@@ -4218,7 +4218,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "ברזל ביסגליצינאט קל לעיכול שאינו גורם לעצירות, עם נגזרות פעילות של B12, פולאט וויטמין C.",
       "id": "supherb-15",
       "provenance": {
-        "file": "supherb.xlsx",
+        "file": "VITAM/supherb.xlsx",
         "sheet": "Untitled",
         "row": 15,
         "sha256": "d8b595b762972ca851971fddb2d5eb38f074dc5145d7d5f8b4b1a96221b03872"
@@ -4258,7 +4258,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "פורמט גומי ללעיסה פטנטי ללא טעם לוואי מתכתי וללא תוספת סוכר.",
       "id": "supherb-16",
       "provenance": {
-        "file": "supherb.xlsx",
+        "file": "VITAM/supherb.xlsx",
         "sheet": "Untitled",
         "row": 16,
         "sha256": "d8b595b762972ca851971fddb2d5eb38f074dc5145d7d5f8b4b1a96221b03872"
@@ -4298,7 +4298,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "ברזל ביסגליצינאט ליפוזומלי בטכנולוגיית Liposovit-Fe, בטעם תות עדין וללא תוספת סוכר.",
       "id": "supherb-17",
       "provenance": {
-        "file": "supherb.xlsx",
+        "file": "VITAM/supherb.xlsx",
         "sheet": "Untitled",
         "row": 17,
         "sha256": "d8b595b762972ca851971fddb2d5eb38f074dc5145d7d5f8b4b1a96221b03872"
@@ -4338,7 +4338,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "מינון מרוכז במיוחד של מגנזיום התורם להפחתת עייפות ולתפקוד תקין של השרירים ומערכת העצבים.",
       "id": "supherb-18",
       "provenance": {
-        "file": "supherb.xlsx",
+        "file": "VITAM/supherb.xlsx",
         "sheet": "Untitled",
         "row": 18,
         "sha256": "d8b595b762972ca851971fddb2d5eb38f074dc5145d7d5f8b4b1a96221b03872"
@@ -4378,7 +4378,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "מגנזיום קשור לחומצת אמינו גליצין לספיגה אופטימלית ונוחות עיכול מרבית, Vegan Friendly.",
       "id": "supherb-19",
       "provenance": {
-        "file": "supherb.xlsx",
+        "file": "VITAM/supherb.xlsx",
         "sheet": "Untitled",
         "row": 19,
         "sha256": "d8b595b762972ca851971fddb2d5eb38f074dc5145d7d5f8b4b1a96221b03872"
@@ -4418,7 +4418,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "שילוב סינרגטי של מגנזיום ציטראט עם ויטמין B6 להטמעה מיטבית בגוף. ויגן פרנדלי.",
       "id": "supherb-20",
       "provenance": {
-        "file": "supherb.xlsx",
+        "file": "VITAM/supherb.xlsx",
         "sheet": "Untitled",
         "row": 20,
         "sha256": "d8b595b762972ca851971fddb2d5eb38f074dc5145d7d5f8b4b1a96221b03872"
@@ -4458,7 +4458,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "מיועד להקלה במצבי עצירות ועידוד פעילות מעיים סדירה ללא גרימת תלות או סבילות.",
       "id": "supherb-21",
       "provenance": {
-        "file": "supherb.xlsx",
+        "file": "VITAM/supherb.xlsx",
         "sheet": "Untitled",
         "row": 21,
         "sha256": "d8b595b762972ca851971fddb2d5eb38f074dc5145d7d5f8b4b1a96221b03872"
@@ -4498,7 +4498,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "כמוסות ג'ל רכות של כורכומין בטכנולוגיית BCM-95 המוגנת בפטנט.",
       "id": "supherb-22",
       "provenance": {
-        "file": "supherb.xlsx",
+        "file": "VITAM/supherb.xlsx",
         "sheet": "Untitled",
         "row": 22,
         "sha256": "d8b595b762972ca851971fddb2d5eb38f074dc5145d7d5f8b4b1a96221b03872"
@@ -4538,7 +4538,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "כמוסות סופט ג'ל קטנות ונוחות לבליעה על בסיס שמן לספיגה מיטבית.",
       "id": "supherb-23",
       "provenance": {
-        "file": "supherb.xlsx",
+        "file": "VITAM/supherb.xlsx",
         "sheet": "Untitled",
         "row": 23,
         "sha256": "d8b595b762972ca851971fddb2d5eb38f074dc5145d7d5f8b4b1a96221b03872"
@@ -4578,7 +4578,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "ויטמין D3 נוזלי על בסיס שמן לספיגה מהירה, מתאים לכל המשפחה ובפרט למי שמתקשה בבליעת כדורים.",
       "id": "supherb-24",
       "provenance": {
-        "file": "supherb.xlsx",
+        "file": "VITAM/supherb.xlsx",
         "sheet": "Untitled",
         "row": 24,
         "sha256": "d8b595b762972ca851971fddb2d5eb38f074dc5145d7d5f8b4b1a96221b03872"
@@ -4618,7 +4618,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "אינו חומצי, עדין לקיבה ומתאים לסובלים מצרבות וחומציות יתר. טבעוני (Vegan Friendly).",
       "id": "supherb-25",
       "provenance": {
-        "file": "supherb.xlsx",
+        "file": "VITAM/supherb.xlsx",
         "sheet": "Untitled",
         "row": 25,
         "sha256": "d8b595b762972ca851971fddb2d5eb38f074dc5145d7d5f8b4b1a96221b03872"
@@ -4658,7 +4658,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "פורמולה משולשת לתמיכה בהגנה הטבעית של הגוף ומערכת החיסון.",
       "id": "supherb-26",
       "provenance": {
-        "file": "supherb.xlsx",
+        "file": "VITAM/supherb.xlsx",
         "sheet": "Untitled",
         "row": 26,
         "sha256": "d8b595b762972ca851971fddb2d5eb38f074dc5145d7d5f8b4b1a96221b03872"
@@ -4698,7 +4698,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "בטעם תות טבעי. ספיגה תת-לשונית עוקפת בעיות ספיגה במערכת העיכול. Vegan Friendly.",
       "id": "supherb-27",
       "provenance": {
-        "file": "supherb.xlsx",
+        "file": "VITAM/supherb.xlsx",
         "sheet": "Untitled",
         "row": 27,
         "sha256": "d8b595b762972ca851971fddb2d5eb38f074dc5145d7d5f8b4b1a96221b03872"
@@ -4738,7 +4738,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "טכנולוגיית Tab in Gum פטנטית, בטעם דובדבן ענבים ללא תוספת סוכר.",
       "id": "supherb-28",
       "provenance": {
-        "file": "supherb.xlsx",
+        "file": "VITAM/supherb.xlsx",
         "sheet": "Untitled",
         "row": 28,
         "sha256": "d8b595b762972ca851971fddb2d5eb38f074dc5145d7d5f8b4b1a96221b03872"
@@ -4778,7 +4778,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "טבליות מציצה בטעם פירות יער ולימון לספיגה ברירית הפה והלוע, מתאים לטבעונים.",
       "id": "supherb-29",
       "provenance": {
-        "file": "supherb.xlsx",
+        "file": "VITAM/supherb.xlsx",
         "sheet": "Untitled",
         "row": 29,
         "sha256": "d8b595b762972ca851971fddb2d5eb38f074dc5145d7d5f8b4b1a96221b03872"
@@ -4818,7 +4818,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "כמוסות קטנות במיוחד מופחתות טעם וריח להקלה על הבליעה בהריון.",
       "id": "supherb-30",
       "provenance": {
-        "file": "supherb.xlsx",
+        "file": "VITAM/supherb.xlsx",
         "sheet": "Untitled",
         "row": 30,
         "sha256": "d8b595b762972ca851971fddb2d5eb38f074dc5145d7d5f8b4b1a96221b03872"
@@ -4858,7 +4858,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "מופק מדגים קטנים בלבד (אנשובי וסרדינים) בתקן טוהר קפדני ללא מתכות כבדות, כשרות מהודרת בד\"צ.",
       "id": "supherb-31",
       "provenance": {
-        "file": "supherb.xlsx",
+        "file": "VITAM/supherb.xlsx",
         "sheet": "Untitled",
         "row": 31,
         "sha256": "d8b595b762972ca851971fddb2d5eb38f074dc5145d7d5f8b4b1a96221b03872"
@@ -4898,7 +4898,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "שילוב משולש אופטימלי לבריאות העצם המבטיח ספיגת סידן והכוונתו לרקמת העצם במקום לכלי הדם.",
       "id": "supherb-32",
       "provenance": {
-        "file": "supherb.xlsx",
+        "file": "VITAM/supherb.xlsx",
         "sheet": "Untitled",
         "row": 32,
         "sha256": "d8b595b762972ca851971fddb2d5eb38f074dc5145d7d5f8b4b1a96221b03872"
@@ -4938,7 +4938,7 @@ window.SUPPLEMENT_CATALOG = {
       "notes": "פורמולה סינרגטית לתמיכה במערכת הנשימה, הקלה בתגובות עונתיות והגנה נוגדת חמצון.",
       "id": "supherb-33",
       "provenance": {
-        "file": "supherb.xlsx",
+        "file": "VITAM/supherb.xlsx",
         "sheet": "Untitled",
         "row": 33,
         "sha256": "d8b595b762972ca851971fddb2d5eb38f074dc5145d7d5f8b4b1a96221b03872"

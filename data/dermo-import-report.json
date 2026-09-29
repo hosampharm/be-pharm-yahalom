@@ -1,0 +1,32 @@
+{
+  "products": 45,
+  "brands": {
+    "CeraVe": 15,
+    "La Roche-Posay": 15,
+    "Vichy": 15
+  },
+  "barcode_statuses": {
+    "source_file_checksum_valid": 45
+  },
+  "source_statuses": {
+    "verified_official": 45
+  },
+  "sources": [
+    {
+      "file": "DERMO/cerave.xlsx",
+      "sha256": "57b1208f0f527dd2173481c36dc18b31e750186ba55bba1889f486e487ea0f58",
+      "products": 15
+    },
+    {
+      "file": "DERMO/la-roche-posay.xlsx",
+      "sha256": "03c49fc3631d4c29b38de4a11b2bd6d11fb47c969784edca5b48806eaa9d91a1",
+      "products": 15
+    },
+    {
+      "file": "DERMO/vichy.xlsx",
+      "sha256": "d423f140948521b93f7825195a614e289527bdac6768634a8bfba8cff7d4720a",
+      "products": 15
+    }
+  ],
+  "issues": []
+}
