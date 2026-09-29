@@ -52,6 +52,7 @@ function show(id){
   document.title='בי פארם יהלום | '+target.querySelector('h1').textContent;
   target.querySelector('h1').focus({preventScroll:true});
   window.scrollTo({top:0,behavior:'instant'});
+  if(window.onSupplementScreen)window.onSupplementScreen(id);
 }
 function goBack(){show(parentScreens[currentScreen]||'home')}
 function skin(n){need=n;document.getElementById('needLabel').textContent='בחרת: '+n;show('skin')}

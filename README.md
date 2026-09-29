@@ -4,6 +4,23 @@ Static Hebrew RTL kiosk. Open `index.html` directly or serve this directory as a
 static site. There is no build step, backend, database service, API key, or
 recommendation engine. Dermo and supplement navigation are independent.
 
+## Guided supplement navigation
+
+The supplement entrance offers direct product lookup or guided browsing. Direct
+lookup starts empty and updates product matches while typing; an exact full
+barcode submitted by a keyboard-style scanner opens the matching record.
+Guided browsing searches a small, explicit directory of topics backed by existing
+catalog categories. Terms such as digestion or sleep suggest a topic to select,
+not a diagnosis or a product prescription. Unknown terms do not invent results.
+Product name search and filters remain inside the selected topic. Back preserves
+that context; Home starts a new session. The original full catalog is not shown
+on entry.
+
+Topic synonyms are navigation labels only. They do not establish that a product
+treats a condition, that a customer has a deficiency, or that a product is suitable
+for them. Category assignments are inherited from the supplied workbooks and
+still require pharmacy review alongside the product information.
+
 ## Supplement catalog
 
 The four supplied workbooks are source snapshots. They are never edited by the

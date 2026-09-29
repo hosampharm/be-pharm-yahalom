@@ -10,6 +10,15 @@
   const count = document.getElementById('catalogCount');
   const empty = document.getElementById('catalogEmpty');
   const content = document.getElementById('supplementContent');
+  let activeGroup = null;
+  let detailOrigin = 'supplementLookup';
+  const scopedScreen = document.getElementById('supplements');
+  scopedScreen.id = 'supplementCatalog';
+  scopedScreen.querySelector('h1').id='supplementCatalogTitle';
+  scopedScreen.setAttribute('aria-labelledby','supplementCatalogTitle');
+  parentScreens.supplementCatalog = 'supplementGuide';
+  parentScreens.supplementLookup = 'supplements';
+  parentScreens.supplementGuide = 'supplements';
   const value = (product, ...keys) => {
     for (const key of keys) {
       const item = product[key];
@@ -40,14 +49,16 @@
     for (let i = raw.length - 2, position = 0; i >= 0; i--, position++) sum += Number(raw[i]) * (position % 2 === 0 ? 3 : 1);
     return (10 - sum % 10) % 10 === Number(raw.at(-1));
   };
-  function fillFilter(select, key) {
-    const values = [...new Set(products.map(product => value(product, key)).filter(Boolean))].sort((a,b) => a.localeCompare(b,'he'));
+  function fillFilter(select, key, source=products) {
+    while(select.options.length>1)select.remove(1);
+    const values = [...new Set(source.map(product => value(product, key)).filter(Boolean))].sort((a,b) => a.localeCompare(b,'he'));
     values.forEach(text => { const option = element('option', '', key==='brand'?brandLabel(text):categoryLabel(text)); option.value = text; select.append(option); });
   }
   function render() {
     const term = normalize(query.value);
     const numeric = /^\d+$/.test(term);
     const matches = products.filter(product => {
+      if(!activeGroup || !activeGroup.categories.includes(product.category))return false;
       if (brand.value && value(product, 'brand') !== brand.value) return false;
       if (category.value && value(product, 'category') !== category.value) return false;
       if (!term) return true;
@@ -67,7 +78,8 @@
       card.addEventListener('click', () => openProduct(product));
       list.append(card);
     });
-    count.textContent = products.length ? matches.length + ' מוצרים מתוך ' + products.length : 'הקטלוג אינו זמין כרגע. ניתן לפנות לצוות בית המרקחת.';
+    const groupTotal=activeGroup?products.filter(product=>activeGroup.categories.includes(product.category)).length:0;
+    count.textContent = products.length ? matches.length + ' מוצרים מתוך ' + groupTotal + ' בתחום שבחרתם' : 'הקטלוג אינו זמין כרגע. ניתן לפנות לצוות בית המרקחת.';
     empty.hidden = matches.length > 0 || products.length === 0;
   }
   function field(container, title, text) {
@@ -77,6 +89,8 @@
     container.append(section);
   }
   function openProduct(product) {
+    detailOrigin=currentScreen;
+    parentScreens.supplementDetail=detailOrigin;
     content.replaceChildren();
     const intro = element('div','product-intro');
     const description = element('div');
@@ -121,12 +135,74 @@
     content.append(sources,element('p','detail-notice','המידע מוצג כפי שנמסר בקטלוג ואינו מהווה אימות עצמאי או המלצה אישית. מידע חסר אינו מעיד על היעדר אזהרות או אלרגנים. יש לעיין בתווית המוצר ולהיוועץ ברוקח או ברוקחת.'));
     show('supplementDetail');
   }
+  function clearFilters(){query.value='';brand.value='';category.value='';render();}
   window.resetSupplementCatalog = () => {
-    query.value='';brand.value='';category.value='';content.replaceChildren();render();
+    activeGroup=null;clearFilters();content.replaceChildren();lookupInput.value='';topicInput.value='';renderLookup();renderTopics();
   };
   fillFilter(brand,'brand');fillFilter(category,'category');
   query.addEventListener('input',render);brand.addEventListener('change',render);category.addEventListener('change',render);
   document.getElementById('catalogFilters').addEventListener('submit',event=>{event.preventDefault();render();});
-  document.getElementById('resetCatalog').addEventListener('click',()=>{window.resetSupplementCatalog();query.focus();});
+  document.getElementById('resetCatalog').addEventListener('click',()=>{clearFilters();query.focus();});
+  function screen(id,title,lead){
+    const section=element('section','screen');section.id=id;
+    const heading=element('h1','',title);heading.id=id+'Title';heading.tabIndex=-1;
+    section.setAttribute('aria-labelledby',heading.id);section.append(heading,element('p','journey-lead',lead));
+    scopedScreen.before(section);return section;
+  }
+  function action(title,description,handler){
+    const button=element('button','journey-choice');button.type='button';
+    button.append(element('span','journey-symbol','◇'),element('span','world-title',title),element('span','world-description',description),element('span','enter','לבחירה ←'));
+    button.addEventListener('click',handler);return button;
+  }
+  function input(section,id,label,placeholder){
+    const wrap=element('label','journey-search',label);wrap.htmlFor=id;
+    const control=element('input');control.id=id;control.type='search';control.autocomplete='off';control.placeholder=placeholder;
+    wrap.append(control);section.append(wrap);return control;
+  }
+  const entry=screen('supplements','איך תרצו להתחיל?','ויטמינים ותוספי תזונה · בדרך שנוחה לכם');
+  const choices=element('div','journey-choices');
+  choices.append(action('הקלדה או סריקת מוצר','מכירים את המוצר? חפשו לפי שם או ברקוד.',()=>show('supplementLookup')),action('התאמה אישית','בחרו תחום עניין והמשיכו למוצרים שבתחום.',()=>show('supplementGuide')));
+  entry.append(choices,element('p','journey-note','בחירה לפי תחום עניין, ללא אבחון או המלצה רפואית.'));
+  const lookup=screen('supplementLookup','איזה מוצר אתם מחפשים?','הקלידו שם או ברקוד, או סרקו בסורק המחובר לעמדה');
+  const lookupInput=input(lookup,'lookupQuery','שם מוצר או ברקוד מלא','למשל: מגנזיום או שם המוצר');
+  const lookupStatus=element('p','catalog-count');lookupStatus.setAttribute('role','status');
+  const lookupList=element('div','catalog-grid');lookupList.id='lookupList';lookup.append(lookupStatus,lookupList,element('p','journey-note','הסריקה מיועדת לסורק המחובר לעמדה. סריקה במצלמה אינה זמינה.'));
+  function renderLookup(){
+    const term=normalize(lookupInput.value);lookupList.replaceChildren();
+    if(!term){lookupStatus.textContent='התחילו להקליד כדי לראות מוצרים';return [];}
+    const matches=products.filter(p=>/^\d+$/.test(term)?validBarcode(p.barcode)&&p.barcode===term:normalize([name(p),englishName(p),brandLabel(value(p,'brand'))].join(' ')).includes(term));
+    lookupStatus.textContent=matches.length?matches.length+' מוצרים נמצאו':'לא נמצא מוצר. נסו שם אחר או ברקוד מלא, או פנו לצוות בית המרקחת.';
+    matches.forEach(p=>{const card=element('button','product-card');card.type='button';card.append(element('span','product-brand',brandLabel(value(p,'brand'))),element('span','product-name',name(p)),element('span','product-meta',value(p,'package_size')),element('span','product-open','למידע על המוצר ←'));card.addEventListener('click',()=>openProduct(p));lookupList.append(card);});return matches;
+  }
+  lookupInput.addEventListener('input',renderLookup);
+  lookupInput.addEventListener('keydown',event=>{if(event.key==='Enter'){event.preventDefault();const matches=renderLookup();if(validBarcode(lookupInput.value.trim())&&matches.length===1)openProduct(matches[0]);}});
+  const guide=screen('supplementGuide','מה תרצו למצוא?','בחרו תחום, או כתבו בכמה מילים מה מעניין אתכם.');
+  const topicInput=input(guide,'topicQuery','חיפוש תחום','למשל: מערכת עיכול, שינה או ויטמינים');
+  guide.append(element('p','journey-note','בחירה לפי תחום עניין, ללא אבחון או המלצה רפואית.'));
+  const topicStatus=element('p','catalog-count');topicStatus.setAttribute('role','status');const topicList=element('div','topic-grid');topicList.id='topicList';guide.append(topicStatus,topicList);
+  const groups=[
+    {title:'עיכול ופרוביוטיקה',categories:['digestive_support','probiotic'],terms:'מערכת עיכול בטן פרוביוטיקה'},
+    {title:'שינה ורגיעה',categories:['sleep_support'],terms:'בעיות שינה הרגעה טבעית רגיעה'},
+    {title:'ויטמינים ומינרלים',categories:['multivitamin','vitamin_d','vitamin_c','vitamin_b','vitamin_b12','iron','magnesium','calcium','zinc','folic_acid'],terms:'חוסר ויטמינים מינרלים ברזל מגנזיום סידן אבץ ויטמין ד ויטמין סי'},
+    {title:'שיער, עור וציפורניים',categories:['hair_skin_nails'],terms:'שיער עור ציפורניים'},
+    {title:'אומגה 3',categories:['omega_3'],terms:'אומגה omega'},
+    {title:'מערכת החיסון',categories:['immune_support'],terms:'חיסון חיסונית'},
+    {title:'תקופת ההיריון',categories:['prenatal'],terms:'הריון היריון prenatal'},
+    {title:'תחומים נוספים',categories:['other'],terms:'אחר נוספים'}
+  ].filter(group=>products.some(p=>group.categories.includes(p.category)));
+  function selectGroup(group){activeGroup=group;const source=products.filter(p=>group.categories.includes(p.category));fillFilter(brand,'brand',source);fillFilter(category,'category',source);clearFilters();scopedScreen.querySelector('h1').textContent=group.title;scopedScreen.querySelector('.catalog-notice').textContent='מוצרים בתחום העניין שבחרתם. הופעת מוצר אינה מעידה על התאמה אישית או זמינות במלאי.';show('supplementCatalog');}
+  function renderTopics(){
+    const term=normalize(topicInput.value);topicList.replaceChildren();
+    const matches=groups.filter(group=>{
+      const searchable=normalize(group.title+' '+group.terms+' '+group.categories.map(categoryLabel).join(' '));
+      const keywords=normalize(group.terms).split(/\s+/).filter(word=>word.length>=3&&!['מערכת','בעיות','טבעית','חוסר'].includes(word));
+      return !term||searchable.includes(term)||keywords.some(word=>term.includes(word));
+    });
+    topicStatus.textContent=matches.length?'בחרו תחום כדי להמשיך':'לא נמצא תחום. נסו מילה אחרת או פנו לרוקח או לרוקחת להכוונה.';
+    matches.forEach(group=>topicList.append(action(group.title,products.filter(p=>group.categories.includes(p.category)).length+' מוצרים בתחום',()=>selectGroup(group))));
+  }
+  topicInput.addEventListener('input',renderTopics);
+  window.onSupplementScreen=id=>{if(id==='supplementLookup')lookupInput.focus();};
+  renderLookup();renderTopics();
   render();
 })();
