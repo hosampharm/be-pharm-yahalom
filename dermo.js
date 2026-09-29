@@ -23,7 +23,7 @@
   resultsScreen.append(node('p','dermo-note','המוצרים מוצגים לפי התחום וסוג העור הרשומים בקטלוג, ללא אבחון או המלצה אישית.'),resultStatus,resultList);
   function cards(container,matches){
     container.replaceChildren();
-    matches.forEach(product=>{const card=node('button','product-card');card.type='button';card.append(node('span','product-brand',text(product,'brand')),node('span','product-name',name(product)),node('span','product-meta',text(product,'package_size')),node('span','product-open','למידע על המוצר ←'));card.addEventListener('click',()=>openProduct(product));container.append(card);});
+    matches.forEach(product=>{const card=node('button','product-card');card.type='button';card.append(window.createProductMedia(text(product,'image_url'),name(product)),node('span','product-brand',text(product,'brand')),node('span','product-name',name(product)),node('span','product-meta',text(product,'package_size')),node('span','product-open','למידע על המוצר ←'));card.addEventListener('click',()=>openProduct(product));container.append(card);});
   }
   window.renderDermoResults=(concern,skin)=>{
     const wanted=concernMap[concern]||[];
@@ -95,7 +95,8 @@
       .filter(group=>products.some(group.contains));
   }
   const directories={concerns:withRemaining(concernGroups),types:withRemaining(typeGroups)};
-  let directoryMode='concerns';let selectedGroup=null;
+  let directoryMode='concerns';let selectedGroup=null;let selectedBrand='';
+  const directoryProducts=()=>selectedBrand?products.filter(p=>p.brand===selectedBrand):products;
   function makeScreen(id,title){
     const section=node('section','screen');section.id=id;
     const h=node('h1','',title);h.id=id+'Title';h.tabIndex=-1;
@@ -126,7 +127,7 @@
   const scopedStatus=node('p','dermo-status');scopedStatus.setAttribute('role','status');const scopedList=node('div','catalog-grid');scopedList.id='dermoCategoryList';scoped.append(scopedStatus,scopedList);
   function fillSelect(select,values,defaultLabel){select.replaceChildren();const all=node('option','',defaultLabel);all.value='';select.append(all);values.forEach(value=>{const option=node('option','',labels[value]||value);option.value=value;select.append(option);});}
   function renderScoped(){
-    const source=selectedGroup?products.filter(selectedGroup.contains):[];const term=normalize(scopedQuery.value);
+    const source=selectedGroup?directoryProducts().filter(selectedGroup.contains):[];const term=normalize(scopedQuery.value);
     const matches=source.filter(p=>{
       if(scopedBrand.value&&p.brand!==scopedBrand.value)return false;
       if(scopedSkin.value&&!tags(p,'skin_types').includes(scopedSkin.value))return false;
@@ -137,21 +138,48 @@
     cards(scopedList,matches);scopedStatus.textContent=matches.length?matches.length+' מוצרים מתוך '+source.length+' בקטגוריה':'לא נמצאו מוצרים בקטגוריה עם הסינון הזה. אפשר לשנות את החיפוש או לנקות את הסינון.';
   }
   function chooseGroup(group){
-    selectedGroup=group;scoped.querySelector('h1').textContent=group.title;
-    const source=products.filter(group.contains);fillSelect(scopedBrand,[...new Set(source.map(p=>p.brand))].sort(),'כל המותגים');fillSelect(scopedSkin,[...new Set(source.flatMap(p=>tags(p,'skin_types')))].sort(),'כל סוגי העור');scopedQuery.value='';renderScoped();show('dermoCategory');
+    selectedGroup=group;scoped.querySelector('h1').textContent=(selectedBrand?selectedBrand+' · ':'')+group.title;
+    const source=directoryProducts().filter(group.contains);fillSelect(scopedBrand,[...new Set(source.map(p=>p.brand))].sort(),'כל המותגים');scopedBrand.closest('label').hidden=Boolean(selectedBrand);fillSelect(scopedSkin,[...new Set(source.flatMap(p=>tags(p,'skin_types')))].sort(),'כל סוגי העור');scopedQuery.value='';renderScoped();show('dermoCategory');
   }
   function renderDirectory(){
+    guide.querySelector('h1').textContent=selectedBrand?selectedBrand+' · מה תרצו למצוא?':'מה תרצו למצוא?';
+    classic.hidden=Boolean(selectedBrand);
     for(const [key,button] of Object.entries(modeButtons))button.setAttribute('aria-pressed',String(key===directoryMode));
     const term=normalize(topicQuery.value);
-    const matches=directories[directoryMode].filter(group=>!term||normalize(group.title+' '+group.terms).includes(term)||group.terms.split(' ').filter(word=>word.length>=3).some(word=>term.includes(word)));
+    const matches=directories[directoryMode].filter(group=>directoryProducts().some(group.contains)).filter(group=>!term||normalize(group.title+' '+group.terms).includes(term)||group.terms.split(' ').filter(word=>word.length>=3).some(word=>term.includes(word)));
     guideList.replaceChildren();guideStatus.textContent=matches.length?'בחרו קטגוריה כדי לראות את המוצרים':'לא נמצאה קטגוריה. נסו מילה אחרת או החליפו את דרך הבחירה.';
-    matches.forEach(group=>{const button=node('button','journey-choice');button.type='button';button.append(node('span','world-title',group.title),node('span','world-description',products.filter(group.contains).length+' מוצרים'),node('span','enter','למוצרים בקטגוריה ←'));button.addEventListener('click',()=>chooseGroup(group));guideList.append(button);});
+    matches.forEach(group=>{const button=node('button','journey-choice');button.type='button';button.append(node('span','world-title',group.title),node('span','world-description',directoryProducts().filter(group.contains).length+' מוצרים'),node('span','enter','למוצרים בקטגוריה ←'));button.addEventListener('click',()=>chooseGroup(group));guideList.append(button);});
   }
   topicQuery.addEventListener('input',renderDirectory);scopedQuery.addEventListener('input',renderScoped);scopedBrand.addEventListener('change',renderScoped);scopedSkin.addEventListener('change',renderScoped);controls.addEventListener('submit',event=>event.preventDefault());clearButton.addEventListener('click',()=>{scopedQuery.value='';scopedBrand.value='';scopedSkin.value='';renderScoped();scopedQuery.focus();});
   parentScreens.dermoGuide='dermo';parentScreens.dermoCategory='dermoGuide';
   const matchEntry=document.querySelector('#dermo button[onclick="show(\'need\')"]');
-  if(matchEntry){matchEntry.removeAttribute('onclick');matchEntry.addEventListener('click',()=>show('dermoGuide'));matchEntry.querySelector('.card-description').textContent='בחרו קטגוריה או סוג מוצר ומצאו את עולם הטיפוח שלכם.';}
-  function resetCategories(){selectedGroup=null;directoryMode='concerns';topicQuery.value='';scopedQuery.value='';scopedBrand.value='';scopedSkin.value='';scopedList.replaceChildren();scopedStatus.textContent='';renderDirectory();}
+  if(matchEntry){matchEntry.removeAttribute('onclick');matchEntry.addEventListener('click',()=>{selectedBrand='';parentScreens.dermoGuide='dermo';directoryMode='concerns';topicQuery.value='';renderDirectory();show('dermoGuide');});matchEntry.querySelector('.card-description').textContent='בחרו קטגוריה או סוג מוצר ומצאו את עולם הטיפוח שלכם.';}
+
+  const brandScreen=makeScreen('dermoBrands','המותגים שלנו');
+  brandScreen.append(node('p','journey-lead','בחרו מותג, ואז את תחום הטיפוח שמעניין אתכם.'));
+  const brandLabel=node('label','journey-search','חיפוש מותג');brandLabel.htmlFor='dermoBrandQuery';
+  const brandQuery=node('input');brandQuery.id='dermoBrandQuery';brandQuery.type='search';brandQuery.autocomplete='off';brandQuery.placeholder='למשל: CeraVe או סרווה';brandLabel.append(brandQuery);brandScreen.append(brandLabel);
+  const brandStatus=node('p','dermo-status');brandStatus.setAttribute('role','status');
+  const brandList=node('div','topic-grid brand-directory');brandList.id='dermoBrandList';brandScreen.append(brandStatus,brandList);
+  const brandNames=[...new Set(products.map(p=>p.brand))].sort((a,b)=>a.localeCompare(b));
+  function renderBrands(){
+    const term=normalize(brandQuery.value);const matches=brandNames.filter(brand=>normalize(brand+' '+brandAliases(brand)).includes(term));
+    brandList.replaceChildren();brandStatus.textContent=matches.length?matches.length+' מותגים בקטלוג':'לא נמצא מותג. נסו שם אחר.';
+    matches.forEach(brand=>{
+      const button=node('button','journey-choice brand-choice');button.type='button';button.dataset.brand=brand;
+      const title=node('span','world-title',brand);title.dir='auto';
+      button.append(title,node('span','world-description',products.filter(p=>p.brand===brand).length+' מוצרים בקטלוג'),node('span','enter','לתחומי הטיפוח ←'));
+      button.addEventListener('click',()=>{selectedBrand=brand;directoryMode='concerns';topicQuery.value='';parentScreens.dermoGuide='dermoBrands';renderDirectory();show('dermoGuide');});brandList.append(button);
+    });
+  }
+  brandQuery.addEventListener('input',renderBrands);parentScreens.dermoBrands='dermo';
+  const brandEntry=node('button','card');brandEntry.type='button';brandEntry.id='dermoBrandsEntry';
+  const brandSymbol=node('span','icon','◇');brandSymbol.setAttribute('aria-hidden','true');
+  brandEntry.append(brandSymbol,node('span','card-title','מותגים'),node('span','card-description','בחרו את המותג שלכם והמשיכו לקטגוריות שלו.'));
+  brandEntry.addEventListener('click',()=>{renderBrands();show('dermoBrands');});document.querySelector('#dermo .grid').append(brandEntry);
+  document.querySelectorAll('#dermo .card').forEach(card=>card.append(node('span','enter','לבחירה ←')));
+  renderBrands();
+  function resetCategories(){selectedBrand='';parentScreens.dermoGuide='dermo';brandQuery.value='';renderBrands();selectedGroup=null;directoryMode='concerns';topicQuery.value='';scopedQuery.value='';scopedBrand.value='';scopedSkin.value='';scopedList.replaceChildren();scopedStatus.textContent='';renderDirectory();}
   renderDirectory();
   window.onDermoScreen=id=>{if(id==='home'){resetCategories();search.input.value='';scan.input.value='';find(search);find(scan,true);resultList.replaceChildren();resultStatus.textContent='';content.replaceChildren();}if(id==='search')search.input.focus();if(id==='scan')scan.input.focus();};
   find(search);find(scan,true);

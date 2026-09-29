@@ -71,7 +71,7 @@
     matches.forEach(product => {
       const card = element('button', 'product-card');
       card.type = 'button';
-      card.append(element('span','product-brand',brandLabel(value(product,'brand'))),
+      card.append(window.createProductMedia(value(product,'image_url'),name(product)),element('span','product-brand',brandLabel(value(product,'brand'))),
         element('span','product-name',name(product)),
         element('span','product-meta',[categoryLabel(value(product,'category')),value(product,'package_size')].filter(Boolean).join(' · ')),
         element('span','product-open','למידע על המוצר ←'));
@@ -172,7 +172,7 @@
     if(!term){lookupStatus.textContent='התחילו להקליד כדי לראות מוצרים';return [];}
     const matches=products.filter(p=>/^\d+$/.test(term)?validBarcode(p.barcode)&&p.barcode===term:normalize([name(p),englishName(p),brandLabel(value(p,'brand'))].join(' ')).includes(term));
     lookupStatus.textContent=matches.length?matches.length+' מוצרים נמצאו':'לא נמצא מוצר. נסו שם אחר או ברקוד מלא, או פנו לצוות בית המרקחת.';
-    matches.forEach(p=>{const card=element('button','product-card');card.type='button';card.append(element('span','product-brand',brandLabel(value(p,'brand'))),element('span','product-name',name(p)),element('span','product-meta',value(p,'package_size')),element('span','product-open','למידע על המוצר ←'));card.addEventListener('click',()=>openProduct(p));lookupList.append(card);});return matches;
+    matches.forEach(p=>{const card=element('button','product-card');card.type='button';card.append(window.createProductMedia(value(p,'image_url'),name(p)),element('span','product-brand',brandLabel(value(p,'brand'))),element('span','product-name',name(p)),element('span','product-meta',value(p,'package_size')),element('span','product-open','למידע על המוצר ←'));card.addEventListener('click',()=>openProduct(p));lookupList.append(card);});return matches;
   }
   lookupInput.addEventListener('input',renderLookup);
   lookupInput.addEventListener('keydown',event=>{if(event.key==='Enter'){event.preventDefault();const matches=renderLookup();if(validBarcode(lookupInput.value.trim())&&matches.length===1)openProduct(matches[0]);}});

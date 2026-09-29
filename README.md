@@ -93,6 +93,13 @@ clears it for the next customer.
 
 ## Deployment
 
+Dermo also offers Brands → available concern/type categories → products. This
+route intersects the selected brand with the category before applying search or
+skin filters. Back retains this context; the general category entry and Home clear
+brand scope. All product lists in both worlds use `product-media.js` for source
+package images, with lazy loading and a missing/failed-image fallback. No package
+imagery is generated or substituted when the source image is unavailable.
+
 Publish the repository root as a static directory (no build command). There is no
 Netlify project configuration or known production URL in this repository. A GitHub
 push by itself does not confirm a live Netlify deployment.
