@@ -21,6 +21,13 @@ ROOT = Path(__file__).resolve().parents[1]
 FILES = ('VITAM/altman.xlsx', 'VITAM/nutricare.xlsx', 'VITAM/solgar.xlsx', 'VITAM/supherb.xlsx')
 FILES += tuple('VITAM/' + name + '.xlsx' for name in ('magnox', 'centrum', 'alsepa', 'dr-k', 'bara-herbs', 'ecosupp', 'hadas'))
 SUBCATEGORIES = {
+    'joint_health':'joints','בריאות מפרקים ותנועה':'joints',
+    'משחה הומאופתית לכאבי שרירים וחבלות':'topical_care',
+    'מיצוי כורכום פטנטי':'curcumin','curcumin':'curcumin',
+    'curcumin_antioxidant':'curcumin','herbal_antioxidant':'antioxidants',
+    'urinary_tract_support':'urinary','superfood':'superfoods',
+    'cholesterol_support':'cholesterol','herbal_cardiovascular':'cardiovascular',
+    'cardiovascular_support':'cardiovascular','antioxidant_energy':'antioxidants',
     'minerals':'minerals','minerals_and_vitamins':'vitamins_minerals','vitamins':'vitamins_minerals',
     'multivitamins':'multivitamin','children_vitamins':'children_vitamins',
     'omega_3':'omega_3','fatty_acids':'fatty_acids',
@@ -143,7 +150,7 @@ def main():
             issues.append({'id': record['id'], 'issues': record['source_issues']})
     merged, by_barcode, duplicates = [], {}, []
     for record in records:
-        record['browse_category'] = SUBCATEGORIES.get(record.get('sub_category'), 'other') if record['category'] in ('supplements', 'dietary_supplements', 'topical_care', 'תוספי תזונה') else record['category']
+        record['browse_category'] = SUBCATEGORIES.get(record.get('sub_category'), 'other') if record['category'] in ('other', 'supplements', 'dietary_supplements', 'topical_care', 'תוספי תזונה') else record['category']
         barcode = record['barcode']
         if barcode and barcode in by_barcode:
             previous = by_barcode[barcode]

@@ -34,6 +34,7 @@
   const brands = {altman:'אלטמן',solgar:'סולגאר',supherb:'סופהרב',nutricare:'נוטריקר'};
   Object.assign(categories,{minerals:'מינרלים',vitamins_minerals:'ויטמינים ומינרלים',children_vitamins:'ויטמינים לילדים',fatty_acids:'חומצות שומן',herbal:'צמחים',mushrooms:'פטריות',antioxidants:'נוגדי חמצון',superfoods:'סופרפוד',respiratory:'חורף וגרון',urinary:'דרכי השתן',women:'בריאות האישה',sports:'תזונת ספורט',topical_care:'שימוש חיצוני',infant_care:'מוצרי תינוקות',ear_care:'מוצרי אוזניים'});
   const extraBrandAliases={'מגנוקס':'magnox','צנטרום':'centrum','אלספה':'alsepa','ד"ר K':'dr k dr-k דוקטור קיי','ברא צמחים':'bara herbs','אקוסאפ':'ecosupp','הדס':'hadas'};
+  Object.assign(categories,{joints:'מפרקים ותנועה',curcumin:'כורכום וכורכומין',cholesterol:'כולסטרול',cardiovascular:'לב וכלי דם'});
   const brandLabel = raw => { const he=brands[raw.toLowerCase().replace(/[^a-z]/g,'')];return he ? he+' · '+raw : raw; };
   const brandSearch=raw=>brandLabel(raw)+' '+(extraBrandAliases[raw]||'');
   const categoryLabel = raw => categories[raw] || raw;
@@ -197,7 +198,7 @@
     {title:'תחומים נוספים',categories:['other'],terms:'אחר נוספים'}
   ];
   groups.find(g=>g.categories.includes('multivitamin')).categories.push('minerals','vitamins_minerals','children_vitamins');
-  for(const key of ['fatty_acids','herbal','mushrooms','antioxidants','superfoods','respiratory','urinary','women','sports','topical_care','infant_care','ear_care'])groups.push({title:categoryLabel(key),categories:[key],terms:categoryLabel(key)});
+  for(const key of ['fatty_acids','herbal','mushrooms','antioxidants','superfoods','respiratory','urinary','women','sports','topical_care','infant_care','ear_care','joints','curcumin','cholesterol','cardiovascular'])groups.push({title:categoryLabel(key),categories:[key],terms:categoryLabel(key)});
   const covered=new Set(groups.flatMap(g=>g.categories));
   groups.find(g=>g.categories.includes('other')).categories.push(...new Set(products.map(p=>p.category).filter(c=>!covered.has(c))));
   function selectGroup(group){activeGroup=group;const source=scopedProducts().filter(p=>group.categories.includes(p.category));fillFilter(brand,'brand',source);fillFilter(category,'category',source);brand.closest('label').hidden=Boolean(selectedBrand);clearFilters();scopedScreen.querySelector('h1').textContent=(selectedBrand?brandLabel(selectedBrand)+' · ':'')+group.title;scopedScreen.querySelector('.catalog-notice').textContent='מוצרים בתחום העניין שבחרתם. הופעת מוצר אינה מעידה על התאמה אישית או זמינות במלאי.';show('supplementCatalog');}

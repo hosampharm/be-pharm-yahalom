@@ -37,6 +37,14 @@ class CatalogImportTests(unittest.TestCase):
         for source in self.catalog['sources']:
             self.assertEqual(hashlib.sha256((ROOT / source['file']).read_bytes()).hexdigest(), source['sha256'])
 
+    def test_all_current_products_have_specific_browsing_categories(self):
+        for product in self.products:
+            self.assertNotIn(product['browse_category'], (None, '', 'other'), product['id'])
+        by_id = {p['id']: p for p in self.products}
+        self.assertEqual(by_id['altman-2']['browse_category'], 'joints')
+        self.assertEqual(by_id['nutricare-30']['browse_category'], 'sports')
+        self.assertEqual(by_id['altman-25']['browse_category'], 'topical_care')
+
     def test_barcodes_are_unique_valid_strings(self):
         values = [r['barcode'] for r in self.products]
         self.assertEqual(len(values), len(set(values)))

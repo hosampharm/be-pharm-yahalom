@@ -98,7 +98,7 @@ window.SUPPLEMENT_CATALOG = {
       "barcode_original": "7290006683731",
       "barcode_verification": "source_file_checksum_valid",
       "source_issues": [],
-      "browse_category": "other"
+      "browse_category": "joints"
     },
     {
       "brand": "Altman",
@@ -139,7 +139,7 @@ window.SUPPLEMENT_CATALOG = {
       "barcode_original": "7290006683748",
       "barcode_verification": "source_file_checksum_valid",
       "source_issues": [],
-      "browse_category": "other"
+      "browse_category": "joints"
     },
     {
       "brand": "אלספה",
@@ -1179,7 +1179,7 @@ window.SUPPLEMENT_CATALOG = {
       "barcode_original": "7290001471289",
       "barcode_verification": "source_file_checksum_valid",
       "source_issues": [],
-      "browse_category": "other"
+      "browse_category": "topical_care"
     },
     {
       "brand": "Altman",
@@ -1425,7 +1425,7 @@ window.SUPPLEMENT_CATALOG = {
       "barcode_original": "7290013142450",
       "barcode_verification": "source_file_checksum_valid",
       "source_issues": [],
-      "browse_category": "other"
+      "browse_category": "curcumin"
     },
     {
       "brand": "Nutri Care",
@@ -2163,7 +2163,7 @@ window.SUPPLEMENT_CATALOG = {
       "barcode_original": "7290014465282",
       "barcode_verification": "source_file_checksum_valid",
       "source_issues": [],
-      "browse_category": "other"
+      "browse_category": "joints"
     },
     {
       "brand": "Nutri Care",
@@ -2286,7 +2286,7 @@ window.SUPPLEMENT_CATALOG = {
       "barcode_original": "7290012485398",
       "barcode_verification": "source_file_checksum_valid",
       "source_issues": [],
-      "browse_category": "other"
+      "browse_category": "urinary"
     },
     {
       "brand": "Nutri Care",
@@ -2368,7 +2368,7 @@ window.SUPPLEMENT_CATALOG = {
       "barcode_original": "7290014465015",
       "barcode_verification": "source_file_checksum_valid",
       "source_issues": [],
-      "browse_category": "other"
+      "browse_category": "superfoods"
     },
     {
       "brand": "Nutri Care",
@@ -2409,7 +2409,7 @@ window.SUPPLEMENT_CATALOG = {
       "barcode_original": "7290014465268",
       "barcode_verification": "source_file_checksum_valid",
       "source_issues": [],
-      "browse_category": "other"
+      "browse_category": "herbal"
     },
     {
       "brand": "Nutri Care",
@@ -2573,7 +2573,7 @@ window.SUPPLEMENT_CATALOG = {
       "barcode_original": "7290014465046",
       "barcode_verification": "source_file_checksum_valid",
       "source_issues": [],
-      "browse_category": "other"
+      "browse_category": "cholesterol"
     },
     {
       "brand": "Nutri Care",
@@ -2614,7 +2614,7 @@ window.SUPPLEMENT_CATALOG = {
       "barcode_original": "7290010081639",
       "barcode_verification": "source_file_checksum_valid",
       "source_issues": [],
-      "browse_category": "other"
+      "browse_category": "sports"
     },
     {
       "brand": "Nutri Care",
@@ -2696,7 +2696,7 @@ window.SUPPLEMENT_CATALOG = {
       "barcode_original": "7290013571649",
       "barcode_verification": "source_file_checksum_valid",
       "source_issues": [],
-      "browse_category": "other"
+      "browse_category": "cardiovascular"
     },
     {
       "brand": "Nutri Care",
@@ -2737,7 +2737,7 @@ window.SUPPLEMENT_CATALOG = {
       "barcode_original": "7290018439425",
       "barcode_verification": "source_file_checksum_valid",
       "source_issues": [],
-      "browse_category": "other"
+      "browse_category": "curcumin"
     },
     {
       "brand": "Nutri Care",
@@ -2778,7 +2778,7 @@ window.SUPPLEMENT_CATALOG = {
       "barcode_original": "7290014465558",
       "barcode_verification": "source_file_checksum_valid",
       "source_issues": [],
-      "browse_category": "other"
+      "browse_category": "curcumin"
     },
     {
       "brand": "Nutri Care",
@@ -2901,7 +2901,7 @@ window.SUPPLEMENT_CATALOG = {
       "barcode_original": "7290012485763",
       "barcode_verification": "source_file_checksum_valid",
       "source_issues": [],
-      "browse_category": "other"
+      "browse_category": "cardiovascular"
     },
     {
       "brand": "Nutri Care",
@@ -2942,7 +2942,7 @@ window.SUPPLEMENT_CATALOG = {
       "barcode_original": "7290004933227",
       "barcode_verification": "source_file_checksum_valid",
       "source_issues": [],
-      "browse_category": "other"
+      "browse_category": "antioxidants"
     },
     {
       "brand": "Nutri Care",
@@ -3806,7 +3806,7 @@ window.SUPPLEMENT_CATALOG = {
       "source_issues": [
         "Supplied official URL refers to omega-3, not this curcumin product; omitted from customer links."
       ],
-      "browse_category": "other"
+      "browse_category": "antioxidants"
     },
     {
       "brand": "Solgar",
@@ -4790,7 +4790,7 @@ window.SUPPLEMENT_CATALOG = {
       "barcode_original": "7290017243238",
       "barcode_verification": "source_file_checksum_valid",
       "source_issues": [],
-      "browse_category": "other"
+      "browse_category": "curcumin"
     },
     {
       "brand": "SupHerb",
