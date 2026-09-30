@@ -93,6 +93,14 @@ clears it for the next customer.
 
 ## Deployment
 
+Supplement additions: seven workbooks (Magnox, Centrum, Alsepa, Dr. K,
+Bara Herbs, Ecosupp and Hadas) extend the catalog to 248 unique products across
+11 brands. The 128 incoming rows overlap three existing Altman/Alsepa barcodes.
+For those, the new Alsepa row is displayed and the complete earlier record is
+retained in `duplicate_sources`; the import report lists each merge. Original
+category fields remain intact. A separate `browse_category` maps supplied
+subcategories to navigation groups, including explicit topical-care groups.
+
 Dermo also offers Brands → available concern/type categories → products. This
 route intersects the selected brand with the category before applying search or
 skin filters. Back retains this context; the general category entry and Home clear

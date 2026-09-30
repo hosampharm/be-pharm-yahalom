@@ -2,7 +2,7 @@
 (() => {
   'use strict';
   const catalog = window.SUPPLEMENT_CATALOG;
-  const products = catalog && Array.isArray(catalog.products) ? catalog.products : [];
+  const products = catalog && Array.isArray(catalog.products) ? catalog.products.map(p=>({...p,category:p.browse_category||p.category})) : [];
   const query = document.getElementById('supplementQuery');
   const brand = document.getElementById('supplementBrand');
   const category = document.getElementById('supplementCategory');
@@ -32,7 +32,10 @@
   const englishName = product => value(product, 'product_name_en');
   const categories = {calcium:'סידן',digestive_support:'תמיכה בעיכול',folic_acid:'חומצה פולית',hair_skin_nails:'שיער, עור וציפורניים',immune_support:'תמיכה במערכת החיסון',iron:'ברזל',magnesium:'מגנזיום',multivitamin:'מולטי ויטמין',omega_3:'אומגה 3',other:'אחר',prenatal:'תוספים לתקופת היריון',probiotic:'פרוביוטיקה',sleep_support:'תמיכה בשינה',vitamin_b:'ויטמיני B',vitamin_b12:'ויטמין B12',vitamin_c:'ויטמין C',vitamin_d:'ויטמין D',zinc:'אבץ'};
   const brands = {altman:'אלטמן',solgar:'סולגאר',supherb:'סופהרב',nutricare:'נוטריקר'};
+  Object.assign(categories,{minerals:'מינרלים',vitamins_minerals:'ויטמינים ומינרלים',children_vitamins:'ויטמינים לילדים',fatty_acids:'חומצות שומן',herbal:'צמחים',mushrooms:'פטריות',antioxidants:'נוגדי חמצון',superfoods:'סופרפוד',respiratory:'חורף וגרון',urinary:'דרכי השתן',women:'בריאות האישה',sports:'תזונת ספורט',topical_care:'שימוש חיצוני',infant_care:'מוצרי תינוקות',ear_care:'מוצרי אוזניים'});
+  const extraBrandAliases={'מגנוקס':'magnox','צנטרום':'centrum','אלספה':'alsepa','ד"ר K':'dr k dr-k דוקטור קיי','ברא צמחים':'bara herbs','אקוסאפ':'ecosupp','הדס':'hadas'};
   const brandLabel = raw => { const he=brands[raw.toLowerCase().replace(/[^a-z]/g,'')];return he ? he+' · '+raw : raw; };
+  const brandSearch=raw=>brandLabel(raw)+' '+(extraBrandAliases[raw]||'');
   const categoryLabel = raw => categories[raw] || raw;
   const normalize = text => String(text).normalize('NFKC').toLocaleLowerCase('he').trim();
   const element = (tag, className, text) => {
@@ -67,7 +70,7 @@
       if (numeric) return validBarcode(product.barcode) && product.barcode === term;
       const categoryText=categoryLabel(value(product,'category'));
       const aliases={vitamin_d:'ויטמין ד',vitamin_c:'ויטמין סי',vitamin_b:'ויטמין בי',vitamin_b12:'בי 12 בי12 ב12 ויטמין ב12'};
-      return normalize([name(product), englishName(product), brandLabel(value(product, 'brand')),categoryText, value(product, 'category'),aliases[product.category]||''].join(' ')).includes(term);
+      return normalize([name(product), englishName(product), brandSearch(value(product, 'brand')),categoryText, value(product, 'category'),aliases[product.category]||''].join(' ')).includes(term);
     });
     list.replaceChildren();
     matches.forEach(product => {
@@ -173,7 +176,7 @@
   function renderLookup(){
     const term=normalize(lookupInput.value);lookupList.replaceChildren();
     if(!term){lookupStatus.textContent='התחילו להקליד כדי לראות מוצרים';return [];}
-    const matches=products.filter(p=>/^\d+$/.test(term)?validBarcode(p.barcode)&&p.barcode===term:normalize([name(p),englishName(p),brandLabel(value(p,'brand'))].join(' ')).includes(term));
+    const matches=products.filter(p=>/^\d+$/.test(term)?validBarcode(p.barcode)&&p.barcode===term:normalize([name(p),englishName(p),brandSearch(value(p,'brand'))].join(' ')).includes(term));
     lookupStatus.textContent=matches.length?matches.length+' מוצרים נמצאו':'לא נמצא מוצר. נסו שם אחר או ברקוד מלא, או פנו לצוות בית המרקחת.';
     matches.forEach(p=>{const card=element('button','product-card');card.type='button';card.append(window.createProductMedia(value(p,'image_url'),name(p)),element('span','product-brand',brandLabel(value(p,'brand'))),element('span','product-name',name(p)),element('span','product-meta',value(p,'package_size')),element('span','product-open','למידע על המוצר ←'));card.addEventListener('click',()=>openProduct(p));lookupList.append(card);});return matches;
   }
@@ -192,7 +195,11 @@
     {title:'מערכת החיסון',categories:['immune_support'],terms:'חיסון חיסונית'},
     {title:'תקופת ההיריון',categories:['prenatal'],terms:'הריון היריון prenatal'},
     {title:'תחומים נוספים',categories:['other'],terms:'אחר נוספים'}
-  ].filter(group=>products.some(p=>group.categories.includes(p.category)));
+  ];
+  groups.find(g=>g.categories.includes('multivitamin')).categories.push('minerals','vitamins_minerals','children_vitamins');
+  for(const key of ['fatty_acids','herbal','mushrooms','antioxidants','superfoods','respiratory','urinary','women','sports','topical_care','infant_care','ear_care'])groups.push({title:categoryLabel(key),categories:[key],terms:categoryLabel(key)});
+  const covered=new Set(groups.flatMap(g=>g.categories));
+  groups.find(g=>g.categories.includes('other')).categories.push(...new Set(products.map(p=>p.category).filter(c=>!covered.has(c))));
   function selectGroup(group){activeGroup=group;const source=scopedProducts().filter(p=>group.categories.includes(p.category));fillFilter(brand,'brand',source);fillFilter(category,'category',source);brand.closest('label').hidden=Boolean(selectedBrand);clearFilters();scopedScreen.querySelector('h1').textContent=(selectedBrand?brandLabel(selectedBrand)+' · ':'')+group.title;scopedScreen.querySelector('.catalog-notice').textContent='מוצרים בתחום העניין שבחרתם. הופעת מוצר אינה מעידה על התאמה אישית או זמינות במלאי.';show('supplementCatalog');}
   function renderTopics(){
     guide.querySelector('h1').textContent=selectedBrand?brandLabel(selectedBrand)+' · מה תרצו למצוא?':'מה תרצו למצוא?';
@@ -212,7 +219,7 @@
   const brandList=element('div','topic-grid brand-directory');brandList.id='supplementBrandList';brandScreen.append(brandStatus,brandList);
   function renderBrands(){
     const term=normalize(brandQuery.value);
-    const matches=[...new Set(products.map(p=>p.brand))].sort((a,b)=>brandLabel(a).localeCompare(brandLabel(b),'he')).filter(b=>normalize(brandLabel(b)).includes(term));
+    const matches=[...new Set(products.map(p=>p.brand))].sort((a,b)=>brandLabel(a).localeCompare(brandLabel(b),'he')).filter(b=>normalize(brandSearch(b)).includes(term));
     brandList.replaceChildren();brandStatus.textContent=matches.length?matches.length+' מותגים בקטלוג':'לא נמצא מותג. נסו שם אחר.';
     matches.forEach(b=>{const button=action(brandLabel(b),products.filter(p=>p.brand===b).length+' מוצרים בקטלוג',()=>{selectedBrand=b;topicInput.value='';parentScreens.supplementGuide='supplementBrands';renderTopics();show('supplementGuide');});button.classList.add('brand-choice');button.dataset.brand=b;brandList.append(button);});
   }

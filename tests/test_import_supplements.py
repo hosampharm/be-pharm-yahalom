@@ -19,10 +19,15 @@ class CatalogImportTests(unittest.TestCase):
         cls.raw, _ = importer.read_records()
 
     def test_all_source_rows_preserved(self):
-        self.assertEqual(len(self.products), 123)
-        self.assertEqual([r['id'] for r in self.raw], [r['id'] for r in self.products])
+        self.assertEqual(len(self.products), 248)
+        self.assertEqual(len(self.raw), 251)
+        preserved = {r['id']: r for r in self.products}
+        for record in self.products:
+            preserved.update({r['id']: r for r in record.get('duplicate_sources', [])})
+        self.assertEqual(set(r['id'] for r in self.raw), set(preserved))
         allowed_changes = {'barcode', 'barcode_verification', 'source_issues', 'provenance'}
-        for source, output in zip(self.raw, self.products):
+        for source in self.raw:
+            output = preserved[source['id']]
             for key, value in source.items():
                 if key in allowed_changes or (source['id'] == 'solgar-20' and key == 'official_product_url'):
                     continue

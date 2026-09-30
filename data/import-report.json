@@ -1,17 +1,24 @@
 {
-  "products": 123,
+  "products": 248,
   "brands": {
-    "Altman": 30,
+    "Altman": 27,
+    "אלספה": 8,
     "Nutri Care": 39,
     "Solgar": 22,
-    "SupHerb": 32
+    "SupHerb": 32,
+    "מגנוקס": 9,
+    "צנטרום": 8,
+    "ד\"ר K": 25,
+    "ברא צמחים": 18,
+    "אקוסאפ": 14,
+    "הדס": 46
   },
   "source_statuses": {
-    "verified_official": 53,
+    "verified_official": 178,
     "verified_retailer": 70
   },
   "barcode_statuses": {
-    "source_file_checksum_valid": 101,
+    "source_file_checksum_valid": 226,
     "confirmed_retailer_barcode": 22
   },
   "issues": [
@@ -42,6 +49,58 @@
       "file": "VITAM/supherb.xlsx",
       "sha256": "d8b595b762972ca851971fddb2d5eb38f074dc5145d7d5f8b4b1a96221b03872",
       "products": 32
+    },
+    {
+      "file": "VITAM/magnox.xlsx",
+      "sha256": "09bcea4ff1628fc9e1d686ab6106179c14e742042873d440199d2de2c6e56e4c",
+      "products": 9
+    },
+    {
+      "file": "VITAM/centrum.xlsx",
+      "sha256": "5fce9ca3e052731decd20b7ebddb2d6fc2f0cc6f5c929341c494e69027aa4ea9",
+      "products": 8
+    },
+    {
+      "file": "VITAM/alsepa.xlsx",
+      "sha256": "8b073d8780e396544eaa6505bb300f6dab9fcead36a5f3be01ad55b6c1d24504",
+      "products": 8
+    },
+    {
+      "file": "VITAM/dr-k.xlsx",
+      "sha256": "c06e18352040998d4c4974afacfa27f6f2486e89500edd3a60ee89f64ad61286",
+      "products": 25
+    },
+    {
+      "file": "VITAM/bara-herbs.xlsx",
+      "sha256": "f5a9a53a890226ca5ee27d73fcbaf4d1705eb3d482f953b002d09f3734fa684b",
+      "products": 18
+    },
+    {
+      "file": "VITAM/ecosupp.xlsx",
+      "sha256": "5a764aef9116139d7bf90955a2e02c5f63ed867babee6dbf0a8e4da299c048fd",
+      "products": 14
+    },
+    {
+      "file": "VITAM/hadas.xlsx",
+      "sha256": "2fcf65ad00c8025f20e9e54726a16aa7682ba8d75a423104a99b914895b59f6f",
+      "products": 46
+    }
+  ],
+  "duplicates_merged": [
+    {
+      "barcode": "7290014775794",
+      "retained": "alsepa-3",
+      "previous": "altman-7"
+    },
+    {
+      "barcode": "7290010318636",
+      "retained": "alsepa-5",
+      "previous": "altman-4"
+    },
+    {
+      "barcode": "7290010318087",
+      "retained": "alsepa-7",
+      "previous": "altman-5"
     }
   ]
 }

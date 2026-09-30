@@ -19,6 +19,24 @@ import openpyxl
 
 ROOT = Path(__file__).resolve().parents[1]
 FILES = ('VITAM/altman.xlsx', 'VITAM/nutricare.xlsx', 'VITAM/solgar.xlsx', 'VITAM/supherb.xlsx')
+FILES += tuple('VITAM/' + name + '.xlsx' for name in ('magnox', 'centrum', 'alsepa', 'dr-k', 'bara-herbs', 'ecosupp', 'hadas'))
+SUBCATEGORIES = {
+    'minerals':'minerals','minerals_and_vitamins':'vitamins_minerals','vitamins':'vitamins_minerals',
+    'multivitamins':'multivitamin','children_vitamins':'children_vitamins',
+    'omega_3':'omega_3','fatty_acids':'fatty_acids',
+    'digestive_health':'digestive_support','digestion':'digestive_support','probiotics':'probiotic',
+    'calming_and_sleep':'sleep_support','calming_and_stress':'sleep_support','stress_sleep':'sleep_support',
+    'immune_support':'immune_support','maternal_health':'prenatal',
+    'herbal_supplements':'herbal','herbal':'herbal','mushroom_supplements':'mushrooms',
+    'antioxidants':'antioxidants','superfoods':'superfoods','respiratory_care':'respiratory',
+    'respiratory_health':'respiratory','winter_throat':'respiratory','urinary_tract':'urinary',
+    'women_health':'women','sports_nutrition':'sports','compresses_and_wipes':'topical_care',
+    'infant_care':'infant_care','ear_health':'ear_care',
+    'ויטמין B12':'vitamin_b12','ויטמין C':'vitamin_c','ויטמין C לילדים':'vitamin_c',
+    'ויטמין D':'vitamin_d','ויטמין D לתינוקות':'vitamin_d','חומצה פולית':'folic_acid',
+    'כורכום וכורכומין':'herbal','מערכת החיסון לחורף':'immune_support',
+    'מערכת עיכול':'digestive_support','פרוביוטיקה':'probiotic','שינה והרגעה':'sleep_support',
+}
 DATA = ROOT / 'data'
 
 
@@ -123,6 +141,20 @@ def main():
             record['source_issues'].append('Barcode not confirmed; exact barcode lookup disabled for this record.')
         if record['source_issues']:
             issues.append({'id': record['id'], 'issues': record['source_issues']})
+    merged, by_barcode, duplicates = [], {}, []
+    for record in records:
+        record['browse_category'] = SUBCATEGORIES.get(record.get('sub_category'), 'other') if record['category'] in ('supplements', 'dietary_supplements', 'topical_care', 'תוספי תזונה') else record['category']
+        barcode = record['barcode']
+        if barcode and barcode in by_barcode:
+            previous = by_barcode[barcode]
+            record['duplicate_sources'] = [previous]
+            merged[merged.index(previous)] = record
+            duplicates.append({'barcode': barcode, 'retained': record['id'], 'previous': previous['id']})
+        else:
+            merged.append(record)
+        if barcode:
+            by_barcode[barcode] = record
+    records = merged
     barcodes = [r['barcode'] for r in records if r['barcode']]
     if len(barcodes) != len(set(barcodes)):
         raise ValueError('Duplicate barcodes; import halted')
@@ -134,7 +166,7 @@ def main():
     report = {'products': len(records), 'brands': dict(collections.Counter(r['brand'] for r in records)),
               'source_statuses': dict(collections.Counter(r['verification_status'] for r in records)),
               'barcode_statuses': dict(collections.Counter(r['barcode_verification'] for r in records)),
-              'issues': issues, 'sources': sources}
+              'issues': issues, 'sources': sources, 'duplicates_merged': duplicates}
     (DATA / 'import-report.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     print(json.dumps(report, ensure_ascii=False, indent=2))
 

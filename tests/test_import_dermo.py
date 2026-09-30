@@ -24,7 +24,7 @@ class DermoImportTests(unittest.TestCase):
                           'Avène': 15, 'Bioderma': 15, 'Cetaphil': 15,
                           'Dr. Or': 15, 'Mustela': 15, 'SeboCalm': 15, 'Uriage': 15})
         supplements = json.loads((ROOT / 'data/supplements.json').read_text(encoding='utf-8'))['products']
-        self.assertEqual(len(supplements), 123)
+        self.assertEqual(len(supplements), 248)
         self.assertFalse({r['id'] for r in supplements} & {r['id'] for r in self.products})
 
     def test_every_original_cell_preserved(self):
