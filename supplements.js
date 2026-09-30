@@ -112,6 +112,7 @@
       image.addEventListener('error',fallback,{once:true}); image.src=imageURL; imageBox.append(image);
     } else fallback();
     intro.append(description,imageBox); content.append(intro);
+    window.appendConsumerInfo?.(content,product);
     const information = element('div','product-information');
     [
       ['active_ingredients','רכיבים פעילים'],['ingredient_amounts','כמויות רכיבים'],

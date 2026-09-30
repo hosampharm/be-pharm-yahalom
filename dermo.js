@@ -72,6 +72,7 @@
     if(validBarcode(product.barcode))description.append(node('p','product-meta','ברקוד: '+product.barcode));
     const imageBox=node('div','product-image');const url=safeURL(text(product,'image_url'));const fallback=()=>imageBox.replaceChildren(node('span','','תמונת מוצר אינה זמינה'));
     if(url){const image=node('img');image.alt=name(product);image.referrerPolicy='no-referrer';image.addEventListener('error',fallback,{once:true});image.src=url;imageBox.append(image);}else fallback();intro.append(description,imageBox);content.append(intro);
+    window.appendConsumerInfo?.(content,product);
     const info=node('div','product-information');
     [['recommended_use_he','איך משתמשים לפי המקור'],['suitable_for_he','למי מיועד לפי המקור'],['warnings_he','חשוב לדעת'],['key_ingredients','רכיבים מרכזיים'],['active_ingredients','רכיבים פעילים'],['spf','מקדם הגנה לפי המקור'],['texture','מרקם'],['fragrance_info','מידע על בישום'],['pregnancy_info_he','מידע בנושא היריון'],['age_group','גיל לפי המקור']].forEach(([key,label])=>field(info,label,text(product,key)));
     [['skin_types','סוגי עור לפי הקטלוג'],['concerns','תחומים לפי הקטלוג'],['target_areas','אזורי שימוש לפי הקטלוג']].forEach(([key,label])=>field(info,label,tagText(product,key)));
