@@ -11,3 +11,4 @@
 .brand-directory .world-title{font-size:28px;letter-spacing:-.5px}
 .brand-directory .enter{font-size:16px}
 @media(max-width:580px){#dermo .grid{grid-template-columns:1fr;gap:18px}#dermo .card{min-height:225px;padding:25px}.brand-directory{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.brand-directory .brand-choice{padding:18px;min-height:180px}.brand-directory .world-title{font-size:22px;overflow-wrap:anywhere}.brand-directory .world-description{font-size:14px}.brand-directory .enter{font-size:14px}}
+.complement-item{min-width:0;display:flex;flex-direction:column}.complement-item>.product-card{width:100%;flex:1}.complement-item>.source-link{font-size:14px}.dermo-complements{margin:28px 0}
