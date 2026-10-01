@@ -172,7 +172,7 @@
   choices.append(action('הקלדה או סריקת מוצר','מכירים את המוצר? חפשו לפי שם או ברקוד.',()=>show('supplementLookup')),action('התאמה אישית','בחרו תחום עניין והמשיכו למוצרים שבתחום.',()=>{selectedBrand='';topicInput.value='';parentScreens.supplementGuide='supplements';renderTopics();show('supplementGuide');}),action('מותגים','בחרו את המותג שלכם והמשיכו לקטגוריות שלו.',()=>{renderBrands();show('supplementBrands');}));
   entry.append(choices,element('p','journey-note','בחירה לפי תחום עניין, ללא אבחון או המלצה רפואית.'));
   const lookup=screen('supplementLookup','איזה מוצר אתם מחפשים?','הקלידו שם או ברקוד, או סרקו בסורק המחובר לעמדה');
-  const lookupInput=input(lookup,'lookupQuery','שם מוצר או ברקוד מלא','למשל: מגנזיום או שם המוצר');
+  const lookupInput=input(lookup,'lookupQuery','ברקוד שעל האריזה או שם מוצר','הקלידו את כל ספרות הברקוד או שם מוצר');
   const lookupStatus=element('p','catalog-count');lookupStatus.setAttribute('role','status');
   const lookupList=element('div','catalog-grid');lookupList.id='lookupList';lookup.append(lookupStatus,lookupList,element('p','journey-note','הסריקה מיועדת לסורק המחובר לעמדה. סריקה במצלמה אינה זמינה.'));
   function renderLookup(){

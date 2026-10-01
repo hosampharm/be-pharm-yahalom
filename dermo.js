@@ -41,7 +41,7 @@
     const status=node('p','dermo-status');status.setAttribute('role','status');
     const list=node('div','catalog-grid');list.id='dermo'+id+'List';screen.append(form,status,list);return{form,input,status,list};
   }
-  const search=searchScreen('search','שם מוצר או מותג','התחילו להקליד שם מוצר','חיפוש במוצרי הטיפוח. הופעת מוצר בקטלוג אינה מעידה על זמינות במלאי.');
+  const search=searchScreen('search','ברקוד שעל האריזה, שם מוצר או מותג','הקלידו את כל ספרות הברקוד או שם מוצר','אפשר להקליד ידנית את הברקוד שעל האריזה. הופעת מוצר בקטלוג אינה מעידה על זמינות במלאי.');
   const scan=searchScreen('scan','ברקוד מלא','הקלידו ברקוד או סרקו בסורק המחובר','הסריקה מיועדת לסורק המחובר לעמדה. סריקה במצלמה אינה זמינה.');scan.input.inputMode='numeric';
   function find(target,barcodeOnly=false){
     const term=normalize(target.input.value);if(!term){cards(target.list,[]);target.status.textContent=barcodeOnly?'הזינו ברקוד מלא כדי לראות את המוצר':'התחילו להקליד כדי לראות מוצרים';return[];}
@@ -150,7 +150,7 @@
   scoped.append(node('p','dermo-note','חפשו בתוך הקטגוריה שבחרתם. הופעת מוצר אינה מעידה על התאמה אישית או זמינות במלאי.'));
   const controls=node('form','catalog-filters');controls.setAttribute('role','search');
   function control(id,label,tag){const wrap=node('label','',label);wrap.htmlFor=id;const field=node(tag);field.id=id;wrap.append(field);controls.append(wrap);return field;}
-  const scopedQuery=control('dermoCategoryQuery','שם מוצר או מותג','input');scopedQuery.type='search';scopedQuery.autocomplete='off';scopedQuery.placeholder='הקלידו לחיפוש בקטגוריה';
+  const scopedQuery=control('dermoCategoryQuery','ברקוד, שם מוצר או מותג','input');scopedQuery.type='search';scopedQuery.autocomplete='off';scopedQuery.placeholder='הקלידו ברקוד מלא או שם לחיפוש בקטגוריה';
   const scopedBrand=control('dermoCategoryBrand','מותג','select');const scopedSkin=control('dermoCategorySkin','סוג עור','select');
   const clearButton=node('button','','ניקוי סינון');clearButton.type='button';controls.append(clearButton);scoped.append(controls);
   const scopedStatus=node('p','dermo-status');scopedStatus.setAttribute('role','status');const scopedList=node('div','catalog-grid');scopedList.id='dermoCategoryList';scoped.append(scopedStatus,scopedList);
