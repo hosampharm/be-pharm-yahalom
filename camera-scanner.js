@@ -6,10 +6,10 @@
   document.addEventListener('visibilitychange', () => { if(document.hidden) stopActive(); });
   window.addEventListener('pagehide', () => stopActive());
   const key = value => String(value).padStart(14, '0');
-  for (const [screenId,inputId,listId,catalog] of [
-    ['scan','dermoscanInput','dermoscanList',window.DERMO_CATALOG],
-    ['search','dermosearchInput','dermosearchList',window.DERMO_CATALOG],
-    ['supplementLookup','lookupQuery','lookupList',window.SUPPLEMENT_CATALOG]
+  for (const [screenId,inputId] of [
+    ['scan','dermoscanInput'],
+    ['search','dermosearchInput'],
+    ['supplementLookup','lookupQuery']
   ]) {
     const screen = document.getElementById(screenId);
     const box = document.createElement('section'); box.className = 'camera-scanner';
@@ -42,10 +42,16 @@
           canvas.width=video.videoWidth;canvas.height=video.videoHeight;context.drawImage(video,0,0);
           let code;try{code=reader.decodeFromCanvas(canvas).getText();}catch{return;}
           if(!/^\d{8,14}$/.test(code))return;
-          const product=catalog.products.find(p=>key(p.barcode)===key(code));
-          close();status.textContent=product?'הברקוד זוהה. פותח את המוצר…':'הברקוד '+code+' זוהה, אך לא נמצא בקטלוג שבחרתם. אפשר לנסות בקטגוריה האחרת או לפנות לצוות.';
-          const input=document.getElementById(inputId);input.value=product?.barcode||code;input.dispatchEvent(new Event('input',{bubbles:true}));
-          if(product)document.querySelector('#'+listId+' button')?.click();
+          const sources=[
+            {products:window.SUPPLEMENT_CATALOG.products,screen:'supplementLookup',input:'lookupQuery',list:'lookupList'},
+            {products:window.DERMO_CATALOG.products,screen:'search',input:'dermosearchInput',list:'dermosearchList'}
+          ];
+          const destination=sources.find(source=>source.products.some(p=>key(p.barcode)===key(code)));
+          const product=destination?.products.find(p=>key(p.barcode)===key(code));
+          close();status.textContent=product?'הברקוד זוהה. פותח את המוצר…':'הברקוד '+code+' זוהה, אך לא נמצא בקטלוג. אפשר להקליד אותו שוב או לפנות לצוות.';
+          if(destination)show(destination.screen);
+          const input=document.getElementById(destination?.input||inputId);input.value=product?.barcode||code;input.dispatchEvent(new Event('input',{bubbles:true}));
+          if(product)document.querySelector('#'+destination.list+' button')?.click();
         },250);
       } catch(error) {
         if(token!==generation)return;
