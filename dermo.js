@@ -42,7 +42,7 @@
     const list=node('div','catalog-grid');list.id='dermo'+id+'List';screen.append(form,status,list);return{form,input,status,list};
   }
   const search=searchScreen('search','ברקוד שעל האריזה, שם מוצר או מותג','הקלידו את כל ספרות הברקוד או שם מוצר','אפשר להקליד ידנית את הברקוד שעל האריזה. הופעת מוצר בקטלוג אינה מעידה על זמינות במלאי.');
-  const scan=searchScreen('scan','ברקוד מלא','הקלידו ברקוד או סרקו בסורק המחובר','הסריקה מיועדת לסורק המחובר לעמדה. סריקה במצלמה אינה זמינה.');scan.input.inputMode='numeric';
+  const scan=searchScreen('scan','ברקוד מלא','הקלידו ברקוד או סרקו בסורק המחובר','אפשר לסרוק במצלמה, בסורק מחובר או להקליד ברקוד מלא.');scan.input.inputMode='numeric';
   function find(target,barcodeOnly=false){
     const term=normalize(target.input.value);if(!term){cards(target.list,[]);target.status.textContent=barcodeOnly?'הזינו ברקוד מלא כדי לראות את המוצר':'התחילו להקליד כדי לראות מוצרים';return[];}
     const numeric=/^\d+$/.test(term);

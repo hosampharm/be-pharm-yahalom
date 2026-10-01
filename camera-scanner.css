@@ -1,0 +1,6 @@
+.camera-scanner{margin:20px 0;padding:18px;border:1px solid #b8cbc5;border-radius:16px;background:#edf3ef}
+.camera-scanner button{padding:14px 20px;margin:0 0 10px 10px;border:1px solid #174e49;border-radius:10px;background:#174e49;color:white;font:inherit;cursor:pointer;min-height:44px}
+.camera-scanner button:disabled{opacity:.6;cursor:wait}
+.camera-scanner video{display:block;width:100%;max-width:640px;max-height:55vh;object-fit:contain;background:#111;border-radius:10px}
+.camera-scanner [hidden]{display:none}
+.camera-scanner p{line-height:1.6;overflow-wrap:anywhere}

@@ -174,7 +174,7 @@
   const lookup=screen('supplementLookup','איזה מוצר אתם מחפשים?','הקלידו שם או ברקוד, או סרקו בסורק המחובר לעמדה');
   const lookupInput=input(lookup,'lookupQuery','ברקוד שעל האריזה או שם מוצר','הקלידו את כל ספרות הברקוד או שם מוצר');
   const lookupStatus=element('p','catalog-count');lookupStatus.setAttribute('role','status');
-  const lookupList=element('div','catalog-grid');lookupList.id='lookupList';lookup.append(lookupStatus,lookupList,element('p','journey-note','הסריקה מיועדת לסורק המחובר לעמדה. סריקה במצלמה אינה זמינה.'));
+  const lookupList=element('div','catalog-grid');lookupList.id='lookupList';lookup.append(lookupStatus,lookupList,element('p','journey-note','אפשר לסרוק במצלמה, בסורק מחובר או להקליד ברקוד מלא.'));
   function renderLookup(){
     const term=normalize(lookupInput.value);lookupList.replaceChildren();
     if(!term){lookupStatus.textContent='התחילו להקליד כדי לראות מוצרים';return [];}

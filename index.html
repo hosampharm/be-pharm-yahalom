@@ -15,7 +15,7 @@ main{flex:1}.screen{padding-bottom:40px}.screen:not(#home){padding-top:46px}.her
 @media(max-width:800px){.app{padding:24px}.world{padding:26px}.grid{grid-template-columns:1fr}.card{min-height:150px}.hero{margin-top:44px}.brand{font-size:21px}}
 @media(max-width:580px){.app{padding:20px}.top{align-items:flex-start;flex-direction:column;gap:18px;padding-bottom:20px}.worlds{grid-template-columns:1fr;gap:16px}.world{min-height:240px;padding:24px}.world-icon{width:46px;height:46px;margin-bottom:22px}.world-title{font-size:27px}.world-description{font-size:17px}.enter{margin-top:22px;padding-top:16px}.hero{margin:32px 0 25px}.hero h1,h1{font-size:34px}.choices{grid-template-columns:1fr}.footer{flex-direction:column;gap:8px}.result{padding:24px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
-</style><link rel="stylesheet" href="supplements.css"><link rel="stylesheet" href="dermo.css"></head><body><div class="app">
+</style><link rel="stylesheet" href="supplements.css"><link rel="stylesheet" href="dermo.css"><link rel="stylesheet" href="camera-scanner.css"></head><body><div class="app">
 <header class="top"><div class="brand"><span class="brand-mark" aria-hidden="true">+</span><div>בי פארם יהלום<small lang="en" dir="ltr">BE PHARM YAHALOM</small></div></div><nav class="nav" aria-label="ניווט ראשי"><button id="backButton" type="button" onclick="goBack()" hidden>→ חזרה</button><button id="homeButton" class="home-button" type="button" onclick="show('home')" hidden>⌂ מסך הבית</button></nav></header>
 <main>
 <section id="home" class="screen active"><div class="hero"><p class="eyebrow">ברוכים הבאים לבי פארם יהלום</p><h1>איך אפשר לעזור לך היום?</h1><p>בחרו את עולם המוצרים שלכם</p></div><div class="worlds">
@@ -58,4 +58,4 @@ function show(id){
 function goBack(){if(window.handleDermoBack?.())return;show(parentScreens[currentScreen]||'home')}
 function skin(n){need=n;document.getElementById('needLabel').textContent='בחרת: '+n;show('skin')}
 function results(s){document.getElementById('summary').textContent='צורך: '+need+' • סוג עור: '+s;if(window.renderDermoResults)window.renderDermoResults(need,s);show('results')}
-</script><script src="data/supplements.js"></script><script src="product-media.js"></script><script src="data/consumer-info.js"></script><script src="consumer-info.js"></script><script src="supplements.js"></script><script src="data/dermo.js"></script><script src="data/dermo-complements.js"></script><script src="dermo.js"></script></body></html>
+</script><script src="data/supplements.js"></script><script src="product-media.js"></script><script src="data/consumer-info.js"></script><script src="consumer-info.js"></script><script src="supplements.js"></script><script src="data/dermo.js"></script><script src="data/dermo-complements.js"></script><script src="dermo.js"></script><script src="vendor/zxing-browser-0.1.5.min.js"></script><script src="camera-scanner.js"></script></body></html>
